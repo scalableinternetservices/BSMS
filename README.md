@@ -12,7 +12,17 @@ Test Test Test
 
 ## Getting Started
 
-Test Test
+1. Make sure Ruby, Rails, and any other tools (such as RVM) are installed and ready to go (click [here](http://installrails.com/steps/choose_os) for geenral installation instructions and [here](https://rvm.io/) for RVM)
+
+2. Clone the repo
+```sh
+git clone git@github.com:scalableinternetservices/BSMS.git
+cd BSMS
+```
+
+## Deploying to Heroku
+
+1. Make an account on [Heroku](https://signup.heroku.com/)
 
 ## Team Members
 
@@ -44,3 +54,6 @@ Brian Young ([@brianjyoung](https://github.com/brianjyoung))
 
 
 ## References
+
+- [README from Bryce's 'demo' repo](https://github.com/scalableinternetservices/demo_rails514_beanstalk)
+
