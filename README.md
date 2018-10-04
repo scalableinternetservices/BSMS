@@ -1,4 +1,4 @@
-# BSMS: 🏡Solving the problem of Subleasing🏢
+# Wanderlease: 🏡Solving the problem of Subleasing🏢
 
 ## Table of Contents 
 - [About](#about)  
@@ -10,6 +10,15 @@
 
 Test Test Test
 
+## Getting Started
+
+Test Test
+
 ## Team Members
 
-Test
+Henry Yu ([@henryhyu](https://github.com/henryhyu))
+<p align="center">
+  <img height="300px" src="https://github.com/scalableinternetservices/BSMS/pics/henry.png" alt="Henry Yu Photo">
+</p>
+
+## References
