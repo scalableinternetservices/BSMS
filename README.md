@@ -3,12 +3,15 @@
 ## Table of Contents 
 - [About](#about)  
 - [Getting Started](#getting-started)  
+- [Deploying to Heroku](#deploying-to-heroku)
 - [Team Members](#team-members)
 - [References](#references)
 
 ## About
 
-Test Test Test
+Wanderlease is a web-based application designed to streamline the process of subleasing. Factors that go into subleasing
+include the social, financial, and security aspects- all of which Wanderlease intuitively streamlines for its users.
+Millenials are moving for jobs, internships sabbaticals, or just to relocate at a higher rate than ever before and thus often cannot commit to their full-year lease, leaving them with rent to pay for their currently leased apartment and their new apartment. Tenants combat this issue by finding subtenants to fill the vacancy and compensate the rent- which is where the huge informal and inconvenient subleasing market exists and Wanderlease comes in. Tenants and subtenants spend over 12 hours looking for home and roommate matches, craigslist scams are abundant, and payment commitment is completely trust-based. Wanderlease expedites, secures, and elucidates the entire process with its social-centric matching platform, automated contracts, and online secure payment. Wanderlease however, is specifically designed for the subleasing market and offers a matching algorithm on top of simple and intuititive UI/UX, thorough filtering, automated contracts and online payment for all users in large metropolitan areas.
 
 ## Getting Started
 
