@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class LandingControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
+  def test_should_get_index
     get landing_index_url
     assert_response :success
   end
