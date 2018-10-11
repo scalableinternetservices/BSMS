@@ -1,7 +1,13 @@
 <div id="form_wrapper">
-  <%= form_for @user, url: {action: "preferences"} do |f| %>
-    <%= f.label :email, "email" %>
-    <%= f.text_area :email %>
+  <%= form_for [@user, @preferences], url: {action: "create"} do |f| %>
+    <%= f.label :bedrooms, "bedrooms" %>
+    <%= f.text_area :bedrooms %>
+    <%= f.label :price, "price" %>
+    <%= f.text_area :price %>
+    <%= f.label :weather, "weather" %>
+    <%= f.text_area :weather %>
+    <%= f.label :parking, "parking" %>
+    <%= f.text_area :parking %>
     <%= f.submit "Submit" %>
    <% end %>
  </div>
