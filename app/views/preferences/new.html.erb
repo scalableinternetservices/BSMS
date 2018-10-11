@@ -1,5 +1,5 @@
 <div id="form_wrapper">
-  <%= form_for [@user, @preferences], url: {action: "create"} do |f| %>
+  <%= form_for @preferences, url: {action: "create"} do |f| %>
     <%= f.label :bedrooms, "bedrooms" %>
     <%= f.text_area :bedrooms %>
     <%= f.label :price, "price" %>

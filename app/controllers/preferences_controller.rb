@@ -1,9 +1,11 @@
 class PreferencesController < ActionController::Base
 	before_action :authenticate_user!
 
-	def preferences_index
-  		@preferences = current_user.preferences.all
-    	@all_preferences = Preferences.all
+	def index
+		@user = current_user
+		@preferences = Preferences.new
+  		# @preferences = current_user.preferences.all
+    	# @all_preferences = Preferences.all
   	end
 
 	def show
@@ -12,7 +14,8 @@ class PreferencesController < ActionController::Base
 	end
 
 	def new
-    	@preferences = current_user.preferences.new
+		@user = current_user
+		@preferences = Preferences.new
   	end
 
   	def edit
@@ -22,20 +25,21 @@ class PreferencesController < ActionController::Base
   	def update
   		@preferences = Preferences.find(params[:id])
   		@preferences.update(preferences_params)
-  		redirect_to preferences_index_path
+  		redirect_to preferences_path
   	end
 
   	def create
   		@user = current_user
     	@preferences = Preferences.new(preferences_params)
+    	@preferences.user_id = @user.id
     	@preferences.save
-    	redirect_to preferences_index_path
+  		redirect_to preferences_path
 	end	
 
 	private
 
 	def preferences_params
-		params.require(:preferences).permit(:user_id,
+		params.require(:preferences).permit(
 								:bedrooms,
 	    						:price,
 	    						:weather,
