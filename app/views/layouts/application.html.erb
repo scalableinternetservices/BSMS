@@ -19,8 +19,8 @@
           <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-success col-12'%>
         <% end %>
       </div>
-      
-      <button type="button" style="float: right;">Preferences</button>
+
+      <%= link_to 'Preferences', preferences_path, class: 'btn btn-success col-12'%> 
     </div>
   </nav>
   <%= yield %>
