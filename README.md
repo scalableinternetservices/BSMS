@@ -6,6 +6,7 @@ rails s -b 'ssl://127.0.0.1:3000?key=config/ssl/localhost.henryyu.key&cert=confi
 https://localhost:3000
 ```
 - You have to start the rails server with the above command and use https when launching the rails app locally
+- Use your own computer name instead of `henryyu`
 
 ## Table of Contents 
 - [About](#about)  
