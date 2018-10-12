@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   get '/preferences' => 'preferences#new'
   post '/preferences' => 'preferences#create'
 
+  get '/listing' => 'listing#new'
+  post '/listing' => 'listing#create'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

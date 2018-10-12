@@ -20,9 +20,14 @@
         <% end %>
       </div>
 
+      <div style='float: center;'>
+        <%= link_to 'Create Listing', listing_path, class: 'btn btn-success col-12'%> 
+      </div>
+      
       <div style='float: right;'>
         <%= link_to 'Preferences', preferences_path, class: 'btn btn-success col-12'%> 
       </div>
+
     </div>
   </nav>
   <%= yield %>
