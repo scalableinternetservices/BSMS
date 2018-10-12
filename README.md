@@ -1,8 +1,10 @@
 # Wanderlease: 🏡Solving the problem of Subleasing🏢
 
 ## Note
-` rails s -b 'ssl://127.0.0.1:3000?key=config/ssl/localhost.henryyu.key&cert=config/ssl/localhost.henryyu.crt' `
-` https://localhost:3000 `
+```
+rails s -b 'ssl://127.0.0.1:3000?key=config/ssl/localhost.henryyu.key&cert=config/ssl/localhost.henryyu.crt
+https://localhost:3000
+```
 - You have to start the rails server with the above command and use https when launching the rails app locally
 
 ## Table of Contents 
