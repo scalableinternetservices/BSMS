@@ -1,13 +1,32 @@
 <div id="form_wrapper">
   <%= form_for @preference, url: {action: "create"} do |f| %>
     <%= f.label :bedrooms, "bedrooms" %>
-    <%= f.text_area :bedrooms %>
+    <%= f.select :bedrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+    <%= f.label :bathrooms, "bathrooms" %>
+    <%= f.select :bathrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+
+    <%= f.label :gym, "gym" %>
+    <%= f.select :gym, [true.humanize, false.humanize] %>
+    <%= f.label :pet_friendly, "pet friendly" %>
+    <%= f.select :pet_friendly, [true.humanize, false.humanize] %>
+    <%= f.label :ac, "ac" %>
+    <%= f.select :ac, [true.humanize, false.humanize] %>
+    <%= f.label :heater, "heater" %>
+    <%= f.select :heater, [true.humanize, false.humanize] %>
+    <%= f.label :wifi, "wifi" %>
+    <%= f.select :wifi, [true.humanize, false.humanize] %>
+    <%= f.label :wash_and_dry, "washer and dryer" %>
+    <%= f.select :wash_and_dry, [true.humanize, false.humanize] %>
+    <%= f.label :yard, "yard space" %>
+    <%= f.select :yard, [true.humanize, false.humanize] %>
+    <%= f.label :public_transportation, "close to public transportation" %>
+    <%= f.select :public_transportation, [true.humanize, false.humanize] %>
+    <%= f.label :parking, "number of parking spots" %>
+    <%= f.select :parking, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
     <%= f.label :price, "price" %>
     <%= f.text_area :price %>
-    <%= f.label :weather, "weather" %>
-    <%= f.text_area :weather %>
-    <%= f.label :parking, "parking" %>
-    <%= f.text_area :parking %>
+
+
     <%= f.submit "Submit" %>
   <% end %>
 </div>
