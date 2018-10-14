@@ -2,11 +2,9 @@
 
 ## Note about Facebook Omniauth SSL
 ```
-rails s -b 'ssl://127.0.0.1:3000?key=config/ssl/localhost.henryyu.key&cert=config/ssl/localhost.henryyu.crt
-https://localhost:3000
+./setup-local-ssl.sh
 ```
-- You have to start the rails server with the above command and use https when launching the rails app locally
-- Use your own computer name instead of `henryyu`
+- Before starting locally for the first time, run this script. Then follow the output to start the rails server
 
 ## Table of Contents 
 - [About](#about)  
