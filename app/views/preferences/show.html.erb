@@ -1,0 +1,30 @@
+<% if @preference %>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th scope="row">Number of Bedrooms</th>
+        <td><%= @preference.bedrooms %></td>
+      </tr>
+      <tr>
+        <th scope="row">Price Cap</th>
+        <td><%= @preference.price %></td>
+      </tr>
+      <tr>
+        <th scope="row">Weather in Area</th>
+        <td><%= @preference.weather %></td>
+      </tr>
+      <tr>
+        <th scope="row">Number of Parking Spots</th>
+        <td><%= @preference.parking %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <%= link_to 'Update Preferences', preferences_edit_path, class: 'btn btn-success'%>
+  </div>
+<% else %>
+  <h3>No preferences set</h3>
+  <div>
+    <%= link_to 'Create Preferences', preferences_new_path, class: 'btn btn-success'%>
+  </div>
+<% end %>

@@ -3,7 +3,7 @@ class PreferencesController < ActionController::Base
 
 	def show
 		@user = current_user
-		@preference = Preferences.where(user_id: @user.id)
+		@preference = Preferences.where(user_id: @user.id).first
 	end
 
 	def new
@@ -12,14 +12,14 @@ class PreferencesController < ActionController::Base
 
 	def edit
 		@user = current_user
-		@preference = Preferences.where(user_id: @user.id)
+		@preference = Preferences.where(user_id: @user.id).first
 	end
 
 	def update
 		@user = current_user
-		@preference = Preferences.where(user_id: @user.id)
+		@preference = Preferences.where(user_id: @user.id).first
 		@preference.update(preferences_params)
-		redirect_to preferences_path
+		redirect_to preferences_show_path
 	end
 
 	def create
@@ -28,7 +28,7 @@ class PreferencesController < ActionController::Base
 		@preference.user_id = current_user.id
 		@preference.save
 		@user.preferences = @preference
-		redirect_to preferences_path
+		redirect_to preferences_show_path
 	end
 
 	private

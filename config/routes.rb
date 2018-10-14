@@ -4,9 +4,12 @@ Rails.application.routes.draw do
   root 'landing#index'
   get 'landing/index'
 
-  #get '/preferences' => 'preferences#create'
-  get '/preferences' => 'preferences#new'
-  post '/preferences' => 'preferences#create'
+  # Preferences Routes
+  get '/preferences/show' => 'preferences#show'
+  get '/preferences/new' => 'preferences#new'
+  post '/preferences/new' => 'preferences#create'
+  get '/preferences/edit' => 'preferences#edit'
+  put '/preferences/edit' => 'preferences#update'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
