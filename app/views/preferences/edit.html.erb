@@ -1,0 +1,13 @@
+<div id="form_wrapper">
+  <%= form_for @preference, url: {action: "update"} do |f| %>
+    <%= f.label :bedrooms, "bedrooms" %>
+    <%= f.text_area :bedrooms, :value => @preference.bedrooms %>
+    <%= f.label :price, "price" %>
+    <%= f.text_area :price, :value => @preference.price %>
+    <%= f.label :weather, "weather" %>
+    <%= f.text_area :weather, :value => @preference.weather %>
+    <%= f.label :parking, "parking" %>
+    <%= f.text_area :parking, :value => @preference.parking %>
+    <%= f.submit "Submit" %>
+  <% end %>
+</div>

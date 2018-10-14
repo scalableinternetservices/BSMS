@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/preferences/new' => 'preferences#new'
   post '/preferences/new' => 'preferences#create'
   get '/preferences/edit' => 'preferences#edit'
-  put '/preferences/edit' => 'preferences#update'
+  patch '/preferences/edit' => 'preferences#update'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
