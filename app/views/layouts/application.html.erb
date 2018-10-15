@@ -12,17 +12,20 @@
   <nav class="navbar navbar-default" role="navigation">
     <div class="container">
       <div class="navbar-header">
-        <% unless current_user %>
-          <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: 'btn btn-success col-12'%>
+        <% if devise_controller? %>
+          <%= link_to "Home", root_path, class: 'btn btn-success'%>
+        <% elsif !current_user %>
+          <%= link_to "Sign in", new_user_session_path, class: 'btn btn-success'%>
+          <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: 'btn btn-link'%>
         <% else %>
-          <%= current_user[:name] %>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-success col-12'%>
+          <%= link_to 'Preferences', preferences_show_path, class: 'btn btn-success'%>
         <% end %>
       </div>
 
       <div style='float: right;'>
         <% if current_user %>
-          <%= link_to 'Preferences', preferences_show_path, class: 'btn btn-success col-12'%>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-success'%>
+          <%= link_to 'Change Password', edit_user_registration_path, class: 'btn btn-link'%>
         <% end %>
       </div>
     </div>
