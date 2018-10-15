@@ -1,48 +1,45 @@
 require 'test_helper'
 
 class PreferencesControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @preference = preferences(:one)
-  end
 
   test "should get index" do
-    get preferences_url
+    get preferences_show_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_preference_url
+    get preferences_new_url
     assert_response :success
   end
 
   test "should create preference" do
-    assert_difference('Preference.count') do
-      post preferences_url, params: { preference: {  } }
+    assert_difference('Preferences.count') do
+      post preferences_new_url, params: { preference: {  } }
     end
 
-    assert_redirected_to preference_url(Preference.last)
+    assert_redirected_to preferences_show_url(Preference.last)
   end
 
   test "should show preference" do
-    get preference_url(@preference)
+    get preferences_show_url(@preference)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_preference_url(@preference)
+    get preferences_edit_url(@preference)
     assert_response :success
   end
 
   test "should update preference" do
-    patch preference_url(@preference), params: { preference: {  } }
-    assert_redirected_to preference_url(@preference)
+    patch preferences_edit_url(@preference), params: { preference: {  } }
+    assert_redirected_to preferences_show_url(@preference)
   end
 
-  test "should destroy preference" do
-    assert_difference('Preference.count', -1) do
-      delete preference_url(@preference)
-    end
+  # test "should destroy preference" do
+  #   assert_difference('Preferences.count', -1) do
+  #     delete preferences_show_url(@preference)
+  #   end
 
-    assert_redirected_to preferences_url
-  end
+  #   assert_redirected_to preferences_show_url
+  # end
 end
