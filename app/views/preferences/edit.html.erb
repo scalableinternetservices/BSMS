@@ -1,33 +1,54 @@
-<div id="form_wrapper">
+<div class='centered'>
   <%= form_for @preference, url: {action: "update"} do |f| %>
-    <%= f.label :bedrooms, "bedrooms" %>
-    <%= f.select :bedrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :value => @preference.bedrooms %>
-    <%= f.label :bathrooms, "bathrooms" %>
-    <%= f.select :bathrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :value => @preference.bathrooms %>
+    <div class='form-group'>
+      <%= f.label :bedrooms, "Bedrooms" %>
+      <%= f.select :bedrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :value => @preference.bedrooms %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :bathrooms, "Bathrooms" %>
+      <%= f.select :bathrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :value => @preference.bathrooms %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :gym, "Gym" %>
+      <%= f.select :gym, [true.humanize, false.humanize], :value => @preference.gym %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :pet_friendly, "Pet Friendly" %>
+      <%= f.select :pet_friendly, [true.humanize, false.humanize], :value => @preference.pet_friendly %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :ac, "Air Conditioning" %>
+      <%= f.select :ac, [true.humanize, false.humanize], :value => @preference.ac %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :heater, "Heater" %>
+      <%= f.select :heater, [true.humanize, false.humanize, :value => @preference.heater] %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :wifi, "Wi-Fi" %>
+      <%= f.select :wifi, [true.humanize, false.humanize], :value => @preference.wifi %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :wash_and_dry, "Washer and Dryer" %>
+      <%= f.select :wash_and_dry, [true.humanize, false.humanize], :value => @preference.wash_and_dry %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :yard, "Yard Space" %>
+      <%= f.select :yard, [true.humanize, false.humanize], :value => @preference.yard %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :public_transportation, "Near Public Transportation" %>
+      <%= f.select :public_transportation, [true.humanize, false.humanize], :value => @preference.public_transportation %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :parking, "Parking Spaces Available" %>
+      <%= f.select :parking, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :value => @preference.parking %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :price, "Highest Price $" %>
+      <%= f.text_field :price, :value => @preference.price %>
+    </div>
 
-    <%= f.label :gym, "gym" %>
-    <%= f.select :gym, [true.humanize, false.humanize], :value => @preference.gym %>
-    <%= f.label :pet_friendly, "pet friendly" %>
-    <%= f.select :pet_friendly, [true.humanize, false.humanize], :value => @preference.pet_friendly %>
-    <%= f.label :ac, "ac" %>
-    <%= f.select :ac, [true.humanize, false.humanize], :value => @preference.ac %>
-    <%= f.label :heater, "heater" %>
-    <%= f.select :heater, [true.humanize, false.humanize, :value => @preference.heater] %>
-    <%= f.label :wifi, "wifi" %>
-    <%= f.select :wifi, [true.humanize, false.humanize], :value => @preference.wifi %>
-    <%= f.label :wash_and_dry, "washer and dryer" %>
-    <%= f.select :wash_and_dry, [true.humanize, false.humanize], :value => @preference.wash_and_dry %>
-    <%= f.label :yard, "yard space" %>
-    <%= f.select :yard, [true.humanize, false.humanize], :value => @preference.yard %>
-    <%= f.label :public_transportation, "close to public transportation" %>
-    <%= f.select :public_transportation, [true.humanize, false.humanize], :value => @preference.public_transportation %>
-
-
-    <%= f.label :parking, "parking" %>
-    <%= f.select :parking, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :value => @preference.parking %>
-    <%= f.label :price, "price" %>
-    <%= f.text_area :price, :value => @preference.price %>
-
-    <%= f.submit "Submit" %>
+    <%= f.submit "Submit", :class => 'btn btn-primary' %>
   <% end %>
 </div>
