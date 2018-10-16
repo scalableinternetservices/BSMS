@@ -5,9 +5,9 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  id: 1
+  id: 1000
   email: tang.changrey@gmail.com
 
 two:
-  id: 2
+  id: 2000
   email: fortekaze@gmail.com

@@ -1,4 +1,8 @@
-<div class='centered'>
-  <h1>Wanderlease</h1>
-  <p>Coming soon!</p>
+<div id='bg'>
+  <div class='centered'>
+    <h1>Wanderlease</h1>
+    <% unless !current_user %>
+      <p>Welcome, <%= current_user[:email]%></p>
+    <% end %>
+  </div>
 </div>
