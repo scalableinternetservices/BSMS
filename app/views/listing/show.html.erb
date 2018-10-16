@@ -1,0 +1,37 @@
+<div class='centered'>
+  <h3>My Listings</h3>
+  <% if @listing %>
+    <% @listing.each_with_index do |data, i| %>
+      <h5>Listing #<%=i+1%></h5>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Location</th>
+            <td><%= data.location %></td>
+          </tr>
+          <tr>
+            <th scope="row">Price</th>
+            <td><%= data.price %></td>
+          </tr>
+          <tr>
+            <th scope="row">Duration Available</th>
+            <td><%= data.duration %></td>
+          </tr>
+          <tr>
+            <th scope="row">Amenities</th>
+            <td><%= data.amenities %></td>
+          </tr>
+          <tr>
+            <th scope="row">Housing Type</th>
+            <td><%= data.housing_type %></td>
+          </tr>
+          <tr>
+            <th scope="row">Description</th>
+            <td><%= data.description %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  <% end %>
+  <%= link_to 'Create Listing', listing_new_path, class: 'btn btn-primary'%>
+</div>

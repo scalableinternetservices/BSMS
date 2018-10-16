@@ -34,16 +34,16 @@ class PreferencesController < ApplicationController
 	private
 
 	def preferences_params
-		params.require(:preferences).permit(:bedrooms, 
+		params.require(:preferences).permit(:bedrooms,
 			:bathrooms,
 			:gym,
 			:pet_friendly,
-			:ac, 
+			:ac,
 			:heater,
 			:wifi,
-			:wash_and_dry, 
+			:wash_and_dry,
 			:yard,
-			:public_transportation, 
+			:public_transportation,
 			:parking,
 			:price)
 	end

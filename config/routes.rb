@@ -11,5 +11,10 @@ Rails.application.routes.draw do
   get '/preferences/edit' => 'preferences#edit'
   patch '/preferences/edit' => 'preferences#update'
 
+  # Listing Routes
+  get '/listing/show' => 'listing#show'
+  get '/listing/new' => 'listing#new'
+  post '/listing/new' => 'listing#create'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
