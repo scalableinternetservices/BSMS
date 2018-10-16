@@ -1,0 +1,65 @@
+<div class='centered'>
+  <% if @preference %>
+    <h3>My Preferences</h3>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">Number of Bedrooms</th>
+          <td><%= @preference.bedrooms %></td>
+        </tr>
+        <tr>
+          <th scope="row">Number of Bathrooms</th>
+          <td><%= @preference.bathrooms %></td>
+        </tr>
+        <tr>
+          <th scope="row">Onsite Gym</th>
+          <td><%= @preference.gym %></td>
+        </tr>
+        <tr>
+          <th scope="row">Pet Friendly</th>
+          <td><%= @preference.pet_friendly %></td>
+        </tr>
+        <tr>
+          <th scope="row">In-Unit Air Conditioning</th>
+          <td><%= @preference.ac %></td>
+        </tr>
+        <tr>
+          <th scope="row">In-Unit Heater</th>
+          <td><%= @preference.heater %></td>
+        </tr>
+        <tr>
+          <th scope="row">Wi-Fi Provided</th>
+          <td><%= @preference.wifi %></td>
+        </tr>
+        <tr>
+          <th scope="row">Washer and Dryer Provided</th>
+          <td><%= @preference.wash_and_dry %></td>
+        </tr>
+        <tr>
+          <th scope="row">Yard Space</th>
+          <td><%= @preference.yard %></td>
+        </tr>
+        <tr>
+          <th scope="row">Near Public Transportation</th>
+          <td><%= @preference.public_transportation %></td>
+        </tr>
+        <tr>
+          <th scope="row">Number of Parking Spaces Available</th>
+          <td><%= @preference.parking %></td>
+        </tr>
+        <tr>
+          <th scope="row">Price Cap (Highest Price)</th>
+          <td><%= @preference.price %></td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <%= link_to 'Update Preferences', preferences_edit_path, class: 'btn btn-primary'%>
+    </div>
+  <% else %>
+    <h3>No preferences set</h3>
+    <div>
+      <%= link_to 'Create Preferences', preferences_new_path, class: 'btn btn-primary'%>
+    </div>
+  <% end %>
+</div>
