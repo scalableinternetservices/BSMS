@@ -34,9 +34,17 @@ class PreferencesController < ApplicationController
 	private
 
 	def preferences_params
-		params.require(:preferences).permit(:bedrooms,
-																				:price,
-																				:weather,
-																				:parking)
+		params.require(:preferences).permit(:bedrooms, 
+			:bathrooms,
+			:gym,
+			:pet_friendly,
+			:ac, 
+			:heater,
+			:wifi,
+			:wash_and_dry, 
+			:yard,
+			:public_transportation, 
+			:parking,
+			:price)
 	end
 end

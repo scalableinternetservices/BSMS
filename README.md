@@ -1,5 +1,11 @@
 # Wanderlease: 🏡Solving the problem of Subleasing🏢
 
+## Note about Facebook Omniauth SSL
+```
+./setup-local-ssl.sh
+```
+- Before starting locally for the first time, run this script. Then follow the output to start the rails server
+
 ## Table of Contents 
 - [About](#about)  
 - [Getting Started](#getting-started)  

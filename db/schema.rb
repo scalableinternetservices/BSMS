@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181011220608) do
+ActiveRecord::Schema.define(version: 20181014214947) do
 
   create_table "preferences", force: :cascade do |t|
     t.integer "bedrooms"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 20181011220608) do
     t.integer "price"
     t.string  "weather"
     t.integer "user_id"
+    t.integer "bathrooms"
+    t.boolean "gym"
+    t.boolean "pet_friendly"
+    t.boolean "ac"
+    t.boolean "heater"
+    t.boolean "wifi"
+    t.boolean "wash_and_dry"
+    t.boolean "yard"
+    t.boolean "public_transportation"
   end
 
   create_table "users", force: :cascade do |t|
