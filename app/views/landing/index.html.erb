@@ -6,9 +6,24 @@
     <% end %>
   </div>
   <h3>Listings</h3>
-	<%= @listings.each do |listings| %>
-		<tr>
-			<td><%= listings.location %></td>
-		</tr>
-		<% end %>
+  <table>
+  	<tr>
+  		<th> location </th>
+  		<th> price </th>
+  		<th> duration </th>
+  		<th> amenities </th>
+  		<th> housing type </th>
+  		<th> description </th>
+  	</tr>
+  	<tr>
+  		<%= @listings.each do |listings| %>
+  			<td><%= listings.location %></td>
+  			<td><%= listings.price %></td>
+  			<td><%= listings.duration %></td>
+  			<td><%= listings.amenities %></td>
+  			<td><%= listings.housing_type %></td>
+  			<td><%= listings.description %></td>
+  		<% end %>
+  	</tr>
+  </table>
 </div>
