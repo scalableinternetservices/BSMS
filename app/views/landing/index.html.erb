@@ -6,26 +6,32 @@
     <% end %>
   </div>
   <% unless !current_user %>
-  <h3>Listings</h3>
-  <table>
-  	<tr>
-  		<th> location </th>
-  		<th> price </th>
-  		<th> duration </th>
-  		<th> amenities </th>
-  		<th> housing type </th>
-  		<th> description </th>
-  	</tr>
-  	<tr>
-  		<%= @listings.each do |listings| %>
-  			<td><%= listings.location %></td>
-  			<td><%= listings.price %></td>
-  			<td><%= listings.duration %></td>
-  			<td><%= listings.amenities %></td>
-  			<td><%= listings.housing_type %></td>
-  			<td><%= listings.description %></td>
-  		<% end %>
-  	</tr>
-  </table>
+  
+  <div class='centered'>
+    <h3>Listings</h3>
+    <table>
+    	<tr>
+    		<th> location </th>
+    		<th> price </th>
+    		<th> duration </th>
+    		<th> amenities </th>
+    		<th> housing type </th>
+    		<th> description </th>
+    	</tr>
+    
+      <% @listings.each do |data| %>
+    	  <tr>
+    			<td><%= data.location %></td>
+    			<td><%= data.price %></td>
+    			<td><%= data.duration %></td>
+    			<td><%= data.amenities %></td>
+    			<td><%= data.housing_type %></td>
+    			<td><%= data.description %></td>
+    	  </tr>
+      <% end %>
+      
+    </table>
+  </div>
+
   <% end %>
 </div>
