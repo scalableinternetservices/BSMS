@@ -5,4 +5,10 @@
       <p>Welcome, <%= current_user[:email]%></p>
     <% end %>
   </div>
+  <h3>Listings</h3>
+	<%= @listings.each do |listings| %>
+		<tr>
+			<td><%= listings.location %></td>
+		</tr>
+		<% end %>
 </div>
