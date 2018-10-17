@@ -5,6 +5,7 @@
       <p>Welcome, <%= current_user[:email]%></p>
     <% end %>
   </div>
+  <% unless !current_user %>
   <h3>Listings</h3>
   <table>
   	<tr>
@@ -26,4 +27,5 @@
   		<% end %>
   	</tr>
   </table>
+  <% end %>
 </div>
