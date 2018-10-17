@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   patch '/preferences/edit' => 'preferences#update'
 
   # Listing Routes
+  get 'listing/index' => 'listing#index'
   get '/listing/show' => 'listing#show'
   get '/listing/new' => 'listing#new'
   post '/listing/new' => 'listing#create'

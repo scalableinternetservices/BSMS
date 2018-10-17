@@ -1,6 +1,10 @@
 class ListingController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @listings = Listing.all
+  end
+
   def show
     @user = current_user
     @listing = Listing.where(user_id: @user.id)
