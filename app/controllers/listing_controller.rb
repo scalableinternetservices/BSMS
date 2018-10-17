@@ -10,6 +10,18 @@ class ListingController < ApplicationController
     @listing = Listing.new
   end
 
+  def edit
+    @user = current_user
+    @listing = Listing.where(user_id: @user.id).first
+  end
+
+  def update
+    @user = current_user
+    @listing = Listing.where(user_id: @user.id).first
+    @listing.update(listing_params)
+    redirect_to listing_show_path
+  end
+
   def create
     @user = current_user
     @listing = Listing.new(listing_params)
@@ -25,8 +37,18 @@ class ListingController < ApplicationController
     params.require(:listing).permit(:location,
                                         :price,
                                         :duration,
-                                        :amenities,
                                         :housing_type,
-                                        :description)
+                                        :bedrooms,
+                                        :bathrooms,
+                                        :gym,
+                                        :pet_friendly,
+                                        :ac,
+                                        :heater,
+                                        :wifi,
+                                        :wash_and_dry,
+                                        :yard,
+                                        :public_transportation,
+                                        :parking,
+                                        :description,)
   end
 end
