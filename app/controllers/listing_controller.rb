@@ -2,6 +2,7 @@ class ListingController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @user = current_user
     @listings = Listing.all
   end
 
