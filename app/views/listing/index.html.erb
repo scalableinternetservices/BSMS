@@ -1,8 +1,9 @@
   <% unless !current_user %>
   
-  <div class='centered'>
-    <h3>Listings</h3>
-    <table>
+  <div>
+    <%= stylesheet_link_tag "listing" %>
+    <h3 align="center">Listings</h3>
+    <table align="center", class="table table-striped table-hover table-all-listings">
         <tr>
             <th> location </th>
             <th> price </th>

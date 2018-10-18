@@ -1,9 +1,12 @@
-<div class='centered'>
-  <h3>My Listings</h3>
+<html>
+<div id = "listings">
+  <h3 align="center"" >My Listings </h3> 
+  <h3 align="center"> <%= link_to 'Create Listing', listing_new_path, class: 'btn btn-primary'%> </h3>
   <% if @listing %>
     <% @listing.each_with_index do |data, i| %>
-      <h5>Listing #<%=i+1%></h5>
-      <table class="table">
+      <h5 align="center">Listing #<%=i+1%></h5>
+      <table align="center", class="table table-striped table-hover table-my-listings">
+        <%= stylesheet_link_tag "listing" %>
         <tbody>
           <tr>
             <th scope="row">Location</th>
@@ -33,5 +36,5 @@
       </table>
     <% end %>
   <% end %>
-  <%= link_to 'Create Listing', listing_new_path, class: 'btn btn-primary'%>
 </div>
+</html>
