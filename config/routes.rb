@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   # Listing Routes
   get 'listing/index' => 'listing#index'
+  get '/listing/show_mine' => 'listing#show_mine'
   get '/listing/show' => 'listing#show'
   get '/listing/new' => 'listing#new'
   post '/listing/new' => 'listing#create'

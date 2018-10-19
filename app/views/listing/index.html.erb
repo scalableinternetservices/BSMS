@@ -1,5 +1,5 @@
   <% unless !current_user %>
-  
+
   <div>
     <%= stylesheet_link_tag "listing" %>
     <h3 align="center">Listings</h3>
@@ -12,10 +12,10 @@
             <th> housing type </th>
             <th> description </th>
         </tr>
-    
+
       <% @listings.each do |data| %>
           <tr>
-                <td><%= data.location %></td>
+                <td><%= link_to data.location, listing_show_path(:id => data.id), class: 'btn btn-link' %></td>
                 <td><%= data.price %></td>
                 <td><%= data.duration %></td>
                 <td><%= data.amenities %></td>
@@ -23,7 +23,7 @@
                 <td><%= data.description %></td>
           </tr>
       <% end %>
-      
+
     </table>
   </div>
 
