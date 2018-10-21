@@ -29,4 +29,21 @@
       </tr>
     </tbody>
   </table>
+  <div align='center'>
+  <h5>Average Rating: <%= @listing.average_rating %></h5>
+  <h3> <%= link_to 'Submit Review', listing_review_new_path(:listing_id => params[:listing_id]), class: 'btn btn-primary'%> </h3>
+  <% if @listing_reviews %>
+    <% @listing_reviews.each do |data| %>
+    <div class="detailBox">
+      <div class="titleBox">
+        <label><%= data.user_id ? User.find(data.user_id).email : "" %> Review</label>
+      </div>
+      <div class="commentBox">
+          <h5 class="rating">Rating: <%= data.rating %></h5>
+          <p class="taskDescription"><%= data.review %></p>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+  </div>
 </div>

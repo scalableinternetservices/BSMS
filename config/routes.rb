@@ -18,5 +18,9 @@ Rails.application.routes.draw do
   get '/listing/new' => 'listing#new'
   post '/listing/new' => 'listing#create'
 
+  # Listing Review Routes
+  get 'listing/review/new' => 'listing_review#new'
+  post 'listing/review/new' => 'listing_review#create'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
