@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   patch '/preferences/edit' => 'preferences#update'
 
   # Listing Routes
+  get '/listing/edit' => 'listing#edit'
+  patch '/listing/edit' => 'listing#update'
+  delete '/listing/destroy' => 'listing#destroy'
   get 'listing/index' => 'listing#index'
   get '/listing/show_mine' => 'listing#show_mine'
   get '/listing/show' => 'listing#show'
@@ -21,7 +24,7 @@ Rails.application.routes.draw do
   # User Routes
   get '/users/show' => 'users#show'
   get '/users/edit_profile' => 'users#edit_profile'
-patch '/users/edit_profile' => 'users#update'
+  patch '/users/edit_profile' => 'users#update'
   # Listing Review Routes
   get 'listing/review/new' => 'listing_review#new'
   post 'listing/review/new' => 'listing_review#create'
