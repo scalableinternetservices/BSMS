@@ -1,7 +1,16 @@
 class ListingController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @user = current_user
+    @listings = Listing.all
+  end
+
   def show
+    @listing = Listing.find(params[:id])
+  end
+
+  def show_mine
     @user = current_user
     @listing = Listing.where(user_id: @user.id)
   end
