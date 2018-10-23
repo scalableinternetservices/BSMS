@@ -37,8 +37,8 @@
 
     <div style='float: right;'>
       <% if current_user %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-danger'%>
-        <%= link_to 'Change Password', edit_user_registration_path, class: 'btn btn-link'%>
+        <%= link_to "My Account", users_show_path(:id => current_user.id), class: 'btn btn-link' %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-danger'%> 
       <% end %>
     </div>
   </nav>

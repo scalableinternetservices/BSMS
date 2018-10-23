@@ -25,7 +25,7 @@ class ListingController < ApplicationController
     @listing.user_id = current_user.id
     @listing.save
     @user.listings << @listing
-    redirect_to listing_show_path
+    redirect_to listing_show_mine_path
   end
 
   private

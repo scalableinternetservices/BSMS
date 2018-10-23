@@ -1,0 +1,11 @@
+<h3 align="center">Edit Profile</h3>
+<%= stylesheet_link_tag "Edit Profile" %>
+<%= form_for @user, url: {action: "update"} do |f| %>
+	<div class='form-group'>
+		<%= f.label :name, "Name"%>
+		<%= f.text_field :name, :value => @user.name%>
+	</div>
+	<div align="center">
+      <%= f.submit "Submit", :class => 'btn btn-primary' %>
+    </div> 
+<% end %>

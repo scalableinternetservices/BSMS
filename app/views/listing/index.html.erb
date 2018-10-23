@@ -11,6 +11,7 @@
             <th> amenities </th>
             <th> housing type </th>
             <th> description </th>
+            <th> Owner </th>
         </tr>
 
       <% @listings.each do |data| %>
@@ -21,6 +22,7 @@
                 <td><%= data.amenities %></td>
                 <td><%= data.housing_type %></td>
                 <td><%= data.description %></td>
+                <td><%= link_to User.find(data.user_id).email, users_show_path(:id => data.user_id), class: 'btn btn-link' %></td>
           </tr>
       <% end %>
 
