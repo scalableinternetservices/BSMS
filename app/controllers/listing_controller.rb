@@ -38,7 +38,6 @@ class ListingController < ApplicationController
 
   def edit
     @listing = Listing.find(params[:listing_id])
-    puts @listing
     if @listing.user_id != current_user.id
       redirect_to listing_show_mine_path, :notice => "You cannot update a listing you do not own!"
     end
