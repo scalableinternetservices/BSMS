@@ -5,9 +5,21 @@ table, th, td {
 }
 
 .table-my-listings {
-   width: 30% !important;
+   width: 50% !important;
+}
+
+.table-my-listings td {
+  word-break: break-all;
+  table-layout: fixed;
 }
 
 .table-all-listings {
    width: 60% !important;
+}
+
+.table-all-listings td {
+  word-break: break-all;
+  table-layout: fixed;
+  white-space: normal;
+  word-wrap: break-word;
 }
