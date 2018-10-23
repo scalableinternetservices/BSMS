@@ -34,11 +34,11 @@ p {
   text-align: center;
 }
 
-table {
+/*table {
   border:1px solid black;
   border-spacing: 1px 2px;
   padding: 0px;
-}
+}*/
 
 tr, td {
   border-collapse: collapse;
@@ -47,4 +47,21 @@ tr, td {
   height: 2px;
   margin: 0;
   border: 0;
+}
+
+/*body {
+  padding-top: 65px;
+}*/
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
+}
+
+div.columned {
+  column-count: 2;
+}
+
+.padded {
+  padding-top: 0px;
 }

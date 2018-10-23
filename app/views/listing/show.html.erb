@@ -1,7 +1,8 @@
-<div class='centered'>
+<div class='centered padded'>
   <h3>My Listings</h3>
   <%= link_to 'Create listing', listing_new_path, class: 'btn btn-primary'%>
   <% if @listing %>
+  <div class='columned'>
     <% @listing.each_with_index do |data, i| %>
       <h5>Listing #<%=i+1%></h5>
     <table>
@@ -77,6 +78,7 @@
       <%= link_to 'Delete listing', listing_destroy_path, class: 'btn btn-primary'%>
     </div>
     <% end %>
+    </div>
   <% else %>
     <h3>No listings set</h3>
     <div>
