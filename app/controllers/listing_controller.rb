@@ -3,7 +3,7 @@ class ListingController < ApplicationController
 
   def show
     @user = current_user
-    @listing = Listing.where(user_id: @user.id)
+    @listing = Listing.where(user_id: @user.id).first
   end
 
   def new
@@ -59,16 +59,3 @@ class ListingController < ApplicationController
                             :description)
   end
 end
-
-# :bedrooms,
-#                                     :bathrooms,
-#                                     :gym,
-#                                     :pet_friendly,
-#                                     :ac,
-#                                     :heater,
-#                                     :wifi,
-#                                     :wash_and_dry,
-#                                     :yard,
-#                                     :public_transportation,
-#                                     :parking,
-#                                     :price

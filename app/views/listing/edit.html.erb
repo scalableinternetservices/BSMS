@@ -1,6 +1,18 @@
 <div class='centered'>
   <%= form_for @listing, url: {action: "update"} do |f| %>
     <div class='form-group'>
+      <%= f.label :location, 'Location' %>
+      <%= f.text_field :location, :value => @listing.location %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :duration, 'Duration' %>
+      <%= f.text_field :duration, :value => @listing.duration %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :housing_type, "Type of Housing" %>
+      <%= f.select :housing_type, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :value => @listing.housing_type %>
+    </div>
+    <div class='form-group'>
       <%= f.label :bedrooms, "Bedrooms" %>
       <%= f.select :bedrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :value => @listing.bedrooms %>
     </div>
@@ -47,6 +59,10 @@
     <div class='form-group'>
       <%= f.label :price, "Highest Price $" %>
       <%= f.text_field :price, :value => @listing.price %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :description, "Additional Information" %>
+      <%= f.text_field :description, :value => @listing.description %>
     </div>
 
     <%= f.submit "Submit", :class => 'btn btn-primary' %>
