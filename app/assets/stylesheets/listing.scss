@@ -14,7 +14,13 @@ table, th, td {
 }
 
 .table-all-listings {
-   width: 60% !important;
+   width: 85% !important;
+}
+
+.table-all-listings td {
+  word-break: break-all;
+  table-layout: fixed;
+  white-space: normal;
 }
 
 .detailBox {
@@ -52,9 +58,4 @@ table, th, td {
     text-align: left;
 }
 
-.table-all-listings td {
-  word-break: break-all;
-  table-layout: fixed;
-  white-space: normal;
-  word-wrap: break-word;
-}
+
