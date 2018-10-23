@@ -1,37 +1,65 @@
 <div class='centered'>
-  <h3>My Listings</h3>
   <% if @listing %>
-    <% @listing.each_with_index do |data, i| %>
-      <h5>Listing #<%=i+1%></h5>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th scope="row">Location</th>
-            <td><%= data.location %></td>
-          </tr>
-          <tr>
-            <th scope="row">Price</th>
-            <td><%= data.price %></td>
-          </tr>
-          <tr>
-            <th scope="row">Duration Available</th>
-            <td><%= data.duration %></td>
-          </tr>
-          <tr>
-            <th scope="row">Amenities</th>
-            <td><%= data.amenities %></td>
-          </tr>
-          <tr>
-            <th scope="row">Housing Type</th>
-            <td><%= data.housing_type %></td>
-          </tr>
-          <tr>
-            <th scope="row">Description</th>
-            <td><%= data.description %></td>
-          </tr>
-        </tbody>
-      </table>
-    <% end %>
+    <h3>My Listings</h3>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">Number of Bedrooms</th>
+          <td><%= @listing.bedrooms %></td>
+        </tr>
+        <tr>
+          <th scope="row">Number of Bathrooms</th>
+          <td><%= @listing.bathrooms %></td>
+        </tr>
+        <tr>
+          <th scope="row">Onsite Gym</th>
+          <td><%= @listing.gym %></td>
+        </tr>
+        <tr>
+          <th scope="row">Pet Friendly</th>
+          <td><%= @listing.pet_friendly %></td>
+        </tr>
+        <tr>
+          <th scope="row">In-Unit Air Conditioning</th>
+          <td><%= @listing.ac %></td>
+        </tr>
+        <tr>
+          <th scope="row">In-Unit Heater</th>
+          <td><%= @listing.heater %></td>
+        </tr>
+        <tr>
+          <th scope="row">Wi-Fi Provided</th>
+          <td><%= @listing.wifi %></td>
+        </tr>
+        <tr>
+          <th scope="row">Washer and Dryer Provided</th>
+          <td><%= @listing.wash_and_dry %></td>
+        </tr>
+        <tr>
+          <th scope="row">Yard Space</th>
+          <td><%= @listing.yard %></td>
+        </tr>
+        <tr>
+          <th scope="row">Near Public Transportation</th>
+          <td><%= @listing.public_transportation %></td>
+        </tr>
+        <tr>
+          <th scope="row">Number of Parking Spaces Available</th>
+          <td><%= @listing.parking %></td>
+        </tr>
+        <tr>
+          <th scope="row">Price Cap (Highest Price)</th>
+          <td><%= @listing.price %></td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <%= link_to 'Update listings', listing_edit_path, class: 'btn btn-primary'%>
+    </div>
+  <% else %>
+    <h3>No listings set</h3>
+    <div>
+      <%= link_to 'Create listings', listing_new_path, class: 'btn btn-primary'%>
+    </div>
   <% end %>
-  <%= link_to 'Create Listing', listing_new_path, class: 'btn btn-primary'%>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181016222239) do
+ActiveRecord::Schema.define(version: 20181023045715) do
 
   create_table "listings", force: :cascade do |t|
     t.string  "location"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 20181016222239) do
     t.string  "housing_type"
     t.string  "description"
     t.integer "user_id"
+    t.integer "bedrooms"
+    t.integer "parking"
+    t.string  "weather"
+    t.integer "bathrooms"
+    t.boolean "gym"
+    t.boolean "pet_friendly"
+    t.boolean "ac"
+    t.boolean "heater"
+    t.boolean "wifi"
+    t.boolean "wash_and_dry"
+    t.boolean "yard"
+    t.boolean "public_transportation"
   end
 
   create_table "preferences", force: :cascade do |t|

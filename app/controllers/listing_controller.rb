@@ -35,20 +35,33 @@ class ListingController < ApplicationController
 
   def listing_params
     params.require(:listing).permit(:location,
-                                        :price,
-                                        :duration,
-                                        :housing_type,
-                                        :bedrooms,
-                                        :bathrooms,
-                                        :gym,
-                                        :pet_friendly,
-                                        :ac,
-                                        :heater,
-                                        :wifi,
-                                        :wash_and_dry,
-                                        :yard,
-                                        :public_transportation,
-                                        :parking,
-                                        :description,)
+                            :duration,
+                            :housing_type,
+                            :bedrooms,
+                            :bathrooms,
+                            :gym,
+                            :pet_friendly,
+                            :ac,
+                            :heater,
+                            :wifi,
+                            :wash_and_dry,
+                            :yard,
+                            :public_transportation,
+                            :parking,
+                            :price,
+                            :description)
   end
 end
+
+# :bedrooms,
+#                                     :bathrooms,
+#                                     :gym,
+#                                     :pet_friendly,
+#                                     :ac,
+#                                     :heater,
+#                                     :wifi,
+#                                     :wash_and_dry,
+#                                     :yard,
+#                                     :public_transportation,
+#                                     :parking,
+#                                     :price
