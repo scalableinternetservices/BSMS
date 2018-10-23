@@ -5,9 +5,56 @@ table, th, td {
 }
 
 .table-my-listings {
-   width: 30% !important;
+   width: 50% !important;
+}
+
+.table-my-listings td {
+  word-break: break-all;
+  table-layout: fixed;
 }
 
 .table-all-listings {
    width: 60% !important;
+}
+
+.detailBox {
+    width:1000px;
+    border:1px solid #bbb;
+    margin:50px;
+}
+
+.titleBox {
+    background-color:#fdfdfd;
+    padding:10px;
+}
+
+.titleBox label{
+  color:#444;
+  font-size: 22px;
+  margin:0;
+  display:inline-block;
+}
+
+.commentBox {
+    padding:10px;
+    border-top:1px dotted #bbb;
+}
+
+.rating {
+    margin-top:10px 0;
+    font-size: 20px;
+    text-align: left;
+}
+
+.taskDescription {
+    margin-top:5px 0;
+    font-size: 15px;
+    text-align: left;
+}
+
+.table-all-listings td {
+  word-break: break-all;
+  table-layout: fixed;
+  white-space: normal;
+  word-wrap: break-word;
 }

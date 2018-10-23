@@ -7,7 +7,8 @@ class ListingController < ApplicationController
   end
 
   def show
-    @listing = Listing.find(params[:id])
+    @listing = Listing.find(params[:listing_id])
+    @listing_reviews = ListingReview.where(listing_id: params[:listing_id])
   end
 
   def show_mine
@@ -23,19 +24,26 @@ class ListingController < ApplicationController
     @user = current_user
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
-    @listing.save
-    @user.listings << @listing
-    redirect_to listing_show_mine_path
+    if @listing.valid?
+      @listing.save
+      @user.listings << @listing
+      redirect_to listing_show_mine_path
+    else
+      render :new
+    end
+  rescue => e
+    flash.now[:notice] = e
+    render :new
   end
 
   private
 
   def listing_params
     params.require(:listing).permit(:location,
-                                        :price,
-                                        :duration,
-                                        :amenities,
-                                        :housing_type,
-                                        :description)
+                                    :price,
+                                    :duration,
+                                    :amenities,
+                                    :housing_type,
+                                    :description)
   end
 end

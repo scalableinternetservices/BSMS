@@ -18,33 +18,47 @@ class PreferencesController < ApplicationController
 	def update
 		@user = current_user
 		@preference = Preferences.where(user_id: @user.id).first
-		@preference.update(preferences_params)
-		redirect_to preferences_show_path
+		if @preference.valid?
+			@preference.update(preferences_params)
+			redirect_to preferences_show_path
+		else
+			render :edit
+		end
+	rescue => e
+		flash.now[:notice] = e
+		render :edit
 	end
 
 	def create
 		@user = current_user
 		@preference = Preferences.new(preferences_params)
 		@preference.user_id = current_user.id
-		@preference.save
-		@user.preferences = @preference
-		redirect_to preferences_show_path
+		if @preference.valid?
+			@preference.save
+			@user.preferences = @preference
+			redirect_to preferences_show_path
+		else
+			render :new
+		end
+	rescue => e
+		flash.now[:notice] = e
+		render :new
 	end
 
 	private
 
 	def preferences_params
 		params.require(:preferences).permit(:bedrooms,
-			:bathrooms,
-			:gym,
-			:pet_friendly,
-			:ac,
-			:heater,
-			:wifi,
-			:wash_and_dry,
-			:yard,
-			:public_transportation,
-			:parking,
-			:price)
+																				:bathrooms,
+																				:gym,
+																				:pet_friendly,
+																				:ac,
+																				:heater,
+																				:wifi,
+																				:wash_and_dry,
+																				:yard,
+																				:public_transportation,
+																				:parking,
+																				:price)
 	end
 end
