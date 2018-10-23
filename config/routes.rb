@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   # User Routes
   get '/users/show' => 'users#show'
+  get '/users/edit_profile' => 'users#edit_profile'
+patch '/users/edit_profile' => 'users#update'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

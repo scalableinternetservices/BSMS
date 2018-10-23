@@ -1,2 +1,6 @@
-<%= @user.email %>
-<%= link_to 'Settings', edit_user_registration_path, class: 'btn btn-link'%>
+Hello <%= @user.name ? @user.name : @user.email %> !
+
+<% if current_user.id == @user.id%>
+<%= link_to 'Edit profile', users_edit_profile_path, class: 'btn btn-link'%>
+<%= link_to 'Security', edit_user_registration_path, class: 'btn btn-link'%>
+<% end %>
