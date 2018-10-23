@@ -1,6 +1,6 @@
 class Listing < ActiveRecord::Base
 	belongs_to :user
-	has_many :listing_reviews
+	has_many :listing_reviews, dependent: :destroy
 	validates :user_id, presence: true
 
 	def average_rating

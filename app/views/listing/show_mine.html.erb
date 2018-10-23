@@ -2,6 +2,11 @@
 <div id = "listings">
   <h3 align="center" >My Listings </h3>
   <h3 align="center"> <%= link_to 'Create Listing', listing_new_path, class: 'btn btn-primary'%> </h3>
+  <% if notice%>
+    <div class='alert alert-danger'>
+      <li><%= notice %></li>
+    </div>
+  <% end %>
   <% if @listing %>
     <% @listing.each_with_index do |data, i| %>
       <h5 align="center">Listing #<%=i+1%></h5>
@@ -21,16 +26,16 @@
             <td><%= data.duration %></td>
           </tr>
           <tr>
-            <th scope="row">Amenities</th>
-            <td><%= data.amenities %></td>
-          </tr>
-          <tr>
             <th scope="row">Housing Type</th>
             <td><%= data.housing_type %></td>
           </tr>
           <tr>
             <th scope="row">Description</th>
             <td><%= data.description %></td>
+          </tr>
+          <tr>
+            <th scope="row"><%= link_to 'Edit', listing_edit_path(:listing_id => data.id), class: 'btn btn-link', style: 'white-space: normal;'%></th>
+            <th scope="row"><%= link_to 'Delete', listing_destroy_path(:listing_id => data.id), method: :delete, class: 'btn btn-link', style: 'white-space: normal;'%></th>
           </tr>
         </tbody>
       </table>

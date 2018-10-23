@@ -36,14 +36,57 @@ class ListingController < ApplicationController
     render :new
   end
 
+  def edit
+    @listing = Listing.find(params[:listing_id])
+    puts @listing
+    if @listing.user_id != current_user.id
+      redirect_to listing_show_mine_path, :notice => "You cannot update a listing you do not own!"
+    end
+  end
+
+  def update
+    @listing = Listing.find(params[:listing_id])
+    if @listing.user_id != current_user.id
+      redirect_to listing_show_mine_path, :notice => "You cannot update a listing you do not own!"
+    elsif @listing.valid?
+      @listing.update(listing_params)
+      redirect_to listing_show_mine_path, :notice => "Successfully updated listing"
+    else
+      render :edit
+    end
+  rescue => e
+    flash.now[:notice] = e
+    render :edit
+  end
+
+  def destroy
+    @listing = Listing.find(params[:listing_id])
+    if @listing.user_id != current_user.id
+      redirect_to listing_show_mine_path, :notice => "You cannot delete a listing you do not own!"
+    else
+      @listing.destroy
+      redirect_to listing_show_mine_path, :notice => "You have successfully deleted the listing!"
+    end
+  end
+
   private
 
   def listing_params
     params.require(:listing).permit(:location,
-                                    :price,
                                     :duration,
-                                    :amenities,
                                     :housing_type,
+                                    :bedrooms,
+                                    :bathrooms,
+                                    :gym,
+                                    :pet_friendly,
+                                    :ac,
+                                    :heater,
+                                    :wifi,
+                                    :wash_and_dry,
+                                    :yard,
+                                    :public_transportation,
+                                    :parking,
+                                    :price,
                                     :description)
   end
 end
