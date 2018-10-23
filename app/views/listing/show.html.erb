@@ -36,7 +36,7 @@
     <% @listing_reviews.each do |data| %>
     <div class="detailBox">
       <div class="titleBox">
-        <label><%= data.user_id ? User.find(data.user_id).email : "" %> Review</label>
+        <label><%= data.user_id ? (User.find(data.user_id).name ? User.find(data.user_id).name : User.find(data.user_id).email) : "" %> Review</label>
       </div>
       <div class="commentBox">
           <h5 class="rating">Rating: <%= data.rating %></h5>

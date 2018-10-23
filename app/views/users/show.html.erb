@@ -1,6 +1,26 @@
-Hello <%= @user.name ? @user.name : @user.email %> !
+<div class='centered'>
+  <h3>Hello <%= @user.name ? @user.name : @user.email %> !</h3>
 
-<% if current_user.id == @user.id%>
-<%= link_to 'Edit profile', users_edit_profile_path, class: 'btn btn-link'%>
-<%= link_to 'Security', edit_user_registration_path, class: 'btn btn-link'%>
-<% end %>
+  </br>
+  <% if current_user.id == @user.id%>
+  <%= link_to 'Edit profile', users_edit_profile_path, class: 'btn btn-link'%>
+  <%= link_to 'Security', edit_user_registration_path, class: 'btn btn-link'%>
+  <% end %>
+  <h5>My Listing's Reviews</h5>
+  <% if @listings %>
+    <% @listings.each do |listing| %>
+      <% listing.listing_reviews.each do |data| %>
+      <div class="detailBox">
+        <div class="titleBox">
+          <label><%= link_to listing.location + " Home Review", listing_show_path(:listing_id => listing.id) %></label>
+        </div>
+        <div class="commentBox">
+            <h5 class="rating">Rating: <%= data.rating %></h5>
+            <p class="taskDescription"><%= data.review %></p>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  <% end %>
+
+</div>
