@@ -1,5 +1,13 @@
 <div class="centered">
   <%= form_for @listing, url: {action: "create"} do |f| %>
+    <% if @listing.errors.any? or notice%>
+      <div class='alert alert-danger'>
+        <li><%= notice %></li>
+        <% @listing.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </div>
+    <% end %>
     <div class='form-group'>
       <%= f.label :location, "Location" %>
       <%= f.text_field :location %>

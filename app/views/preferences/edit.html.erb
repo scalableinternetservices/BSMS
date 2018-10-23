@@ -1,6 +1,14 @@
 <div>
   <%= stylesheet_link_tag "preferences" %>
   <%= form_for @preference, url: {action: "update"} do |f| %>
+    <% if @preference.errors.any? or notice%>
+      <div class='alert alert-danger'>
+        <li><%= notice %></li>
+        <% @preference.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </div>
+    <% end %>
     <div align="center", class='form-group form'>
       <%= f.label :bedrooms, "Bedrooms" %>
       <%= f.select :bedrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :value => @preference.bedrooms %>
@@ -51,6 +59,6 @@
     </div>
     <div align="center">
       <%= f.submit "Submit", :class => 'btn btn-primary' %>
-    </div>  
+    </div>
   <% end %>
 </div>
