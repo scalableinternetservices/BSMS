@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   get '/listing/new' => 'listing#new'
   post '/listing/new' => 'listing#create'
 
+  # User Routes
+  get '/users/show' => 'users#show'
+  get '/users/edit_profile' => 'users#edit_profile'
+patch '/users/edit_profile' => 'users#update'
   # Listing Review Routes
   get 'listing/review/new' => 'listing_review#new'
   post 'listing/review/new' => 'listing_review#create'
