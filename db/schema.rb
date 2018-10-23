@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181016222239) do
+ActiveRecord::Schema.define(version: 20181021010506) do
+
+  create_table "listing_reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.string  "review"
+    t.integer "listing_id"
+    t.integer "user_id"
+  end
 
   create_table "listings", force: :cascade do |t|
     t.string  "location"
