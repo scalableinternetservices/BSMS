@@ -3,4 +3,5 @@ class Listing < ActiveRecord::Base
 	validates :user_id, presence: true
 	validates :bedrooms, numericality: {only_integer: true}
 	validates :parking, numericality: {only_integer: true}
+	include Enumerable
 end

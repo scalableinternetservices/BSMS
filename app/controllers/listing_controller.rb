@@ -3,7 +3,7 @@ class ListingController < ApplicationController
 
   def show
     @user = current_user
-    @listing = Listing.where(user_id: @user.id).first
+    @listing = Listing.where(user_id: @user.id)
   end
 
   def new
@@ -24,7 +24,7 @@ class ListingController < ApplicationController
 
   def destroy
     @user = current_user
-    @listing = Listing.where(user_id: @user_id).first
+    @listing = Listing.where(user_id: @user.id).first
     @listing.destroy
     redirect_to listing_show_path, :notice => "Your listing has been deleted!"
   end
