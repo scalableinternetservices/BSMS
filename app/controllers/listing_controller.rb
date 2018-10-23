@@ -26,7 +26,7 @@ class ListingController < ApplicationController
     @user = current_user
     @listing = Listing.where(user_id: @user_id).first
     @listing.destroy
-    redirect_to '/listing/new', :notice => "Your listing has been deleted!"
+    redirect_to listing_show_path, :notice => "Your listing has been deleted!"
   end
 
   def create

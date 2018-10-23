@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get '/listing/edit' => 'listing#edit'
   patch '/listing/edit' => 'listing#update'
   get '/listing/destroy' => 'listing#destroy'
-  delete '/listing/destroy' => 'listing#new'
+  delete '/listing/destroy' => 'listing#show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
