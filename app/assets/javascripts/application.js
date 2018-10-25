@@ -30,14 +30,14 @@ function populateEndDate() {
 document.addEventListener("turbolinks:load", function() {
   $(document).ready(function() {
     $("#dateStart").datepicker({
-      dateFormat: "dd-M-yy",
+      dateFormat: "mm/dd/yy",
       minDate: 0,
       onSelect: function(date) {
         populateEndDate();
       }
     });
     $('#dateEnd').datepicker({
-      dateFormat: "dd-M-yy",
+      dateFormat: "mm/dd/yy",
       minDate: 1,
       onClose: function() {
         var dt1 = $('#dateStart').datepicker('getDate');
