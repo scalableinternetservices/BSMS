@@ -1,4 +1,4 @@
-<div class="centered">
+<div align="center">
   <%= form_for @listing, url: {action: "create"} do |f| %>
     <% if @listing.errors.any? or notice%>
       <div class='alert alert-danger'>

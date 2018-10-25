@@ -9,7 +9,7 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" role="navigation">
 
     <%= link_to_if(current_user.nil?, "WANDERLEASE",root_path, class: 'navbar-brand') do
       link_to("WANDERLEASE", listing_index_path, class: 'navbar-brand') end %>
