@@ -1,4 +1,4 @@
-<div class='centered'>
+<div align="center">
   <%= form_for @listing, :url => listing_edit_path(:listing_id => params[:listing_id]), method: :patch do |f| %>
     <% if @listing.errors.any? or notice%>
       <div class='alert alert-danger'>

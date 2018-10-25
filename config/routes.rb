@@ -29,5 +29,12 @@ Rails.application.routes.draw do
   get 'listing/review/new' => 'listing_review#new'
   post 'listing/review/new' => 'listing_review#create'
 
+  resources :listing_review do
+    member do
+      put "like", to: "listing_review#upvote"
+      put "dislike", to:"listing_review#downvote"
+    end
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

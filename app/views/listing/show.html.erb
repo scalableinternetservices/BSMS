@@ -80,6 +80,17 @@
     <% @listing_reviews.each do |data| %>
     <div class="detailBox">
       <div class="titleBox">
+
+        <%= link_to like_listing_review_path(data), method: :put do %>
+             <button type="button" class="btn btn-primary"> Upvote <%= data.get_upvotes.size %>
+             </button>
+        <% end %>
+
+        <%= link_to dislike_listing_review_path(data), method: :put do %>
+            <button type="button" class="btn btn-primary"> Downvote <%= data.get_downvotes.size %>
+             </button>
+        <% end %>
+
         <label><%= data.user_id ? (User.find(data.user_id).name ? User.find(data.user_id).name : User.find(data.user_id).email) : "" %> Review</label>
       </div>
       <div class="commentBox">
