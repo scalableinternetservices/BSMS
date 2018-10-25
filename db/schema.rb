@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181025213838) do
+ActiveRecord::Schema.define(version: 20181025233552) do
 
   create_table "listing_reviews", force: :cascade do |t|
     t.integer "rating"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20181025213838) do
     t.boolean "public_transportation"
     t.string  "start_date"
     t.string  "end_date"
+    t.string  "title"
   end
 
   create_table "preferences", force: :cascade do |t|
