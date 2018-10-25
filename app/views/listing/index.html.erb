@@ -19,7 +19,7 @@
           <tr>
                 <td ><%= link_to data.location, listing_show_path(:listing_id => data.id), class: 'btn btn-link', style: 'white-space: normal;'%></td>
                 <td><%= data.price %></td>
-                <td><%= data.duration %></td>
+                <td><%= data.start_date %> to <%= data.end_date %></td>
                 <td><%= data.amenities %></td>
                 <td><%= data.housing_type %></td>
                 <td><%= data.average_rating %></td>

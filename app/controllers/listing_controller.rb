@@ -72,7 +72,8 @@ class ListingController < ApplicationController
 
   def listing_params
     params.require(:listing).permit(:location,
-                                    :duration,
+                                    :start_date,
+                                    :end_date,
                                     :housing_type,
                                     :bedrooms,
                                     :bathrooms,

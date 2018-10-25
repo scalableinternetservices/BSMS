@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20181025213838) do
   create_table "listings", force: :cascade do |t|
     t.string  "location"
     t.integer "price"
-    t.integer "duration"
     t.string  "amenities"
     t.string  "housing_type"
     t.string  "description"
@@ -39,6 +38,8 @@ ActiveRecord::Schema.define(version: 20181025213838) do
     t.boolean "wash_and_dry"
     t.boolean "yard"
     t.boolean "public_transportation"
+    t.string  "start_date"
+    t.string  "end_date"
   end
 
   create_table "preferences", force: :cascade do |t|

@@ -16,10 +16,15 @@
       <%= f.label :price, "Price $" %>
       <%= f.text_field :price %>
     </div>
+
     <div class='form-group'>
-      <%= f.label :duration, "Duration Available" %>
-      <%= f.text_field :duration %>
+      <%= f.label :start_date, "Start Date" %>
+      <%= f.text_field :start_date, :id => 'dateStart' %>
+      <%= f.label :end_date, "End Date" %>
+      <%= f.text_field :end_date, :id => 'dateEnd' %>
     </div>
+
+
     <div class='form-group'>
       <%= f.label :bedrooms, "Bedrooms" %>
       <%= f.select :bedrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
