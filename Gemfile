@@ -7,6 +7,8 @@ end
 
 # Humanize 'true' and 'false' boolean to look like 'Yes' and 'No'
 gem 'humanize_boolean'
+# Datepicker
+gem 'bootstrap-datepicker-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.7'
