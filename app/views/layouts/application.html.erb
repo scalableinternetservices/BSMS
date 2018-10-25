@@ -6,6 +6,10 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet" />
+
   </head>
 
   <body>
@@ -38,7 +42,7 @@
     <div style='float: right;'>
       <% if current_user %>
         <%= link_to "My Account", users_show_path(:id => current_user.id), class: 'btn btn-link' %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-danger'%> 
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-danger'%>
       <% end %>
     </div>
   </nav>

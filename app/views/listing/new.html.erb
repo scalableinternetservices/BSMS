@@ -19,9 +19,9 @@
 
     <div class='form-group'>
       <%= f.label :start_date, "Start Date" %>
-      <%= f.text_field :start_date,data:{ provide:'datepicker', 'date-format' => 'M dd,yyyy', 'date-autoclose' => 'true', 'date-start-date' => '0d' }, id: "startDate" %>
+      <%= f.text_field :start_date, :id => 'dateStart' %>
       <%= f.label :end_date, "End Date" %>
-      <%= f.text_field :end_date,data:{ provide:'datepicker', 'date-autoclose' => 'true' }, id: "endDate" %>
+      <%= f.text_field :end_date, :id => 'dateEnd' %>
     </div>
 
 
@@ -85,4 +85,3 @@
     <%= f.submit "Submit", :class => 'btn btn-primary'%>
    <% end %>
  </div>
-
