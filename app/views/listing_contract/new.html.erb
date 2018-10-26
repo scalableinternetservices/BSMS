@@ -1,0 +1,25 @@
+<div class='centered'>
+  <%= form_for @listing_contract, :url => listing_contract_new_path(:listing_request_id => params[:listing_request_id]), method: :post do |f| %>
+    <% if @listing_contract.errors.any? or notice%>
+      <div class='alert alert-danger'>
+        <li><%= notice %></li>
+        <% @listing_contract.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </div>
+    <% end %>
+    <h3>
+    Confirm sublease contract with
+    <%= link_to @subleaser_user.name ? @subleaser_user.name : @subleaser_user.email, users_show_path(:id => @subleaser_user.id) %>
+    for
+    <%= link_to @listing.readable_title, listing_show_path(:listing_id => @listing.id) %>?
+    </h3>
+    <h5>
+    Expires on <%= @listing.end_date %>
+    </h5>
+    <%= f.hidden_field :listing_id, :value => @listing.id %>
+    <%= f.hidden_field :subleaser_id, :value => @subleaser_user.id %>
+    <%= f.hidden_field :subletter_id, :value => @subletter_user.id %>
+    <%= f.submit "Submit", :class => 'btn btn-primary' %>
+  <% end %>
+</div>

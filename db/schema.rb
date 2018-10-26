@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181023220516) do
+ActiveRecord::Schema.define(version: 20181026081956) do
+
+  create_table "listing_contracts", force: :cascade do |t|
+    t.integer  "listing_id"
+    t.integer  "subleaser_id"
+    t.integer  "subletter_id"
+    t.datetime "expiration_date"
+    t.boolean  "expired",         default: false, null: false
+  end
+
+  create_table "listing_requests", force: :cascade do |t|
+    t.integer "listing_id"
+    t.integer "subleaser_id"
+    t.string  "request_message"
+    t.boolean "expired",         default: false, null: false
+  end
 
   create_table "listing_reviews", force: :cascade do |t|
     t.integer "rating"
@@ -22,7 +37,6 @@ ActiveRecord::Schema.define(version: 20181023220516) do
   create_table "listings", force: :cascade do |t|
     t.string  "location"
     t.integer "price"
-    t.integer "duration"
     t.string  "amenities"
     t.string  "housing_type"
     t.string  "description"
@@ -39,6 +53,10 @@ ActiveRecord::Schema.define(version: 20181023220516) do
     t.boolean "wash_and_dry"
     t.boolean "yard"
     t.boolean "public_transportation"
+    t.string  "start_date"
+    t.string  "end_date"
+    t.string  "title"
+    t.boolean "available",             default: true, null: false
   end
 
   create_table "preferences", force: :cascade do |t|
@@ -72,6 +90,20 @@ ActiveRecord::Schema.define(version: 20181023220516) do
     t.text     "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.string   "votable_type"
+    t.integer  "votable_id"
+    t.string   "voter_type"
+    t.integer  "voter_id"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   end
 
 end

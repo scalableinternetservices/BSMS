@@ -1,4 +1,4 @@
-<div class='centered'>
+<div align="center">
   <%= form_for @listing, :url => listing_edit_path(:listing_id => params[:listing_id]), method: :patch do |f| %>
     <% if @listing.errors.any? or notice%>
       <div class='alert alert-danger'>
@@ -9,24 +9,34 @@
       </div>
     <% end %>
     <div class='form-group'>
-      <%= f.label :location, 'Location' %>
-      <%= f.text_field :location, :value => @listing.location %>
+      <%= f.label :title, 'Title' %>
+      <%= f.text_field :title, :value => @listing.title %>
     </div>
     <div class='form-group'>
-      <%= f.label :duration, 'Duration' %>
-      <%= f.text_field :duration, :value => @listing.duration %>
+      <%= f.label :location, 'Location' %>
+      <%= f.text_field :location, :value => @listing.location, :required => true %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :price, "Price $" %>
+      <%= f.text_field :price, :value => @listing.price, :required => true %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :start_date, "Start Date" %>
+      <%= f.text_field :start_date, :id => 'dateStart', :value => @listing.start_date, :required => true %>
+      <%= f.label :end_date, "End Date" %>
+      <%= f.text_field :end_date, :id => 'dateEnd', :value => @listing.end_date, :required => true %>
     </div>
     <div class='form-group'>
       <%= f.label :housing_type, "Type of Housing" %>
-      <%= f.select :housing_type, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :value => @listing.housing_type %>
+      <%= f.select :housing_type, ['Condo', 'Apartment', 'Home'], :value => @listing.housing_type, :required => true %>
     </div>
     <div class='form-group'>
       <%= f.label :bedrooms, "Bedrooms" %>
-      <%= f.select :bedrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :value => @listing.bedrooms %>
+      <%= f.select :bedrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :value => @listing.bedrooms, :required => true %>
     </div>
     <div class='form-group'>
       <%= f.label :bathrooms, "Bathrooms" %>
-      <%= f.select :bathrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :value => @listing.bathrooms %>
+      <%= f.select :bathrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :value => @listing.bathrooms, :required => true %>
     </div>
     <div class='form-group'>
       <%= f.label :gym, "Gym" %>
@@ -65,11 +75,7 @@
       <%= f.select :parking, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :value => @listing.parking %>
     </div>
     <div class='form-group'>
-      <%= f.label :price, "Highest Price $" %>
-      <%= f.text_field :price, :value => @listing.price %>
-    </div>
-    <div class='form-group'>
-      <%= f.label :description, "Additional Information" %>
+      <%= f.label :description, "Description" %>
       <%= f.text_field :description, :value => @listing.description %>
     </div>
 

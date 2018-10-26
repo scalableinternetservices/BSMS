@@ -3,7 +3,7 @@ class ListingController < ApplicationController
 
   def index
     @user = current_user
-    @listings = Listing.all
+    @listings = Listing.where(available: true)
   end
 
   def show
@@ -13,7 +13,7 @@ class ListingController < ApplicationController
 
   def show_mine
     @user = current_user
-    @listing = Listing.where(user_id: @user.id)
+    @listings = Listing.where(user_id: @user.id)
   end
 
   def new
@@ -32,20 +32,25 @@ class ListingController < ApplicationController
       render :new
     end
   rescue => e
+    @listing = Listing.new
     flash.now[:notice] = e
     render :new
   end
 
   def edit
     @listing = Listing.find(params[:listing_id])
-    if @listing.user_id != current_user.id
+    if not @listing.available
+      redirect_to listing_show_mine_path, :notice => "You cannot update a listing which is already subleased"
+    elsif @listing.user_id != current_user.id
       redirect_to listing_show_mine_path, :notice => "You cannot update a listing you do not own!"
     end
   end
 
   def update
     @listing = Listing.find(params[:listing_id])
-    if @listing.user_id != current_user.id
+    if not @listing.available
+      redirect_to listing_show_mine_path, :notice => "You cannot update a listing which is already subleased"
+    elsif @listing.user_id != current_user.id
       redirect_to listing_show_mine_path, :notice => "You cannot update a listing you do not own!"
     elsif @listing.valid?
       @listing.update(listing_params)
@@ -71,8 +76,10 @@ class ListingController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:location,
-                                    :duration,
+    params.require(:listing).permit(:title,
+                                    :location,
+                                    :start_date,
+                                    :end_date,
                                     :housing_type,
                                     :bedrooms,
                                     :bathrooms,

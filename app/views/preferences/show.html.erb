@@ -1,10 +1,11 @@
-<div>
+<div align='center'>
   <% if @preference %>
   <%= stylesheet_link_tag "preferences" %>
     <h3 align="center">My Preferences</h3>
     <div align="center">
       <%= link_to 'Update Preferences', preferences_edit_path, class: 'btn btn-primary'%>
     </div>
+    </br>
     <table align="center", class="table table-striped table-hover table-my-pref">
       <tbody>
         <tr>
@@ -57,7 +58,7 @@
         </tr>
       </tbody>
     </table>
-    
+
   <% else %>
     <h3>No preferences set</h3>
     <div>

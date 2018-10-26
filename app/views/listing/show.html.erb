@@ -1,5 +1,10 @@
 <div id = "listings">
-  <h3 align="center">Listing Information</h3>
+  <% if notice%>
+    <div class='alert alert-danger'>
+      <li><%= notice %></li>
+    </div>
+  <% end %>
+  <h3 align="center"><%= @listing.readable_title %></h3>
   <table align="center", class="table table-striped table-hover table-my-listings">
     <%= stylesheet_link_tag "listing" %>
     <tbody>
@@ -13,7 +18,7 @@
       </tr>
       <tr>
         <th scope="row">Duration Available</th>
-        <td><%= @listing.duration %></td>
+        <td><%= @listing.start_date %> to <%= @listing.end_date %></td>
       </tr>
       <tr>
         <th scope="row">Number of Bedrooms</th>
@@ -74,13 +79,36 @@
     </tbody>
   </table>
   <div align='center'>
-  <h5>Average Rating: <%= @listing.average_rating %></h5>
-  <h3> <%= link_to 'Submit Review', listing_review_new_path(:listing_id => params[:listing_id]), class: 'btn btn-primary'%> </h3>
+  <h5>Landlord Average Rating: <%= User.find(@listing.user_id).average_rating %></h5></br>
+  <h5>Rating: <%= @listing.average_rating %></h5>
+  <h3>
+    <% if @listing.available and @listing.user_id != current_user.id %>
+      <%= link_to 'Request Listing', listing_request_new_path(:listing_id => params[:listing_id]), class: 'btn btn-primary'%>
+    <% elsif ListingContract.where(listing_id: params[:listing_id]).size != 0 and ListingContract.where(listing_id: params[:listing_id]).first.subleaser_id == current_user.id %>
+      <%= link_to 'Submit Review', listing_review_new_path(:listing_id => params[:listing_id]), class: 'btn btn-primary'%>
+    <% elsif @listing.user_id == current_user.id %>
+      <%= link_to 'Edit Listing', listing_edit_path(:listing_id => @listing.id), class: 'btn btn-primary' %>
+    <% else %>
+      Not Available!
+    <% end %>
+  </h3>
   <% if @listing_reviews %>
     <% @listing_reviews.each do |data| %>
     <div class="detailBox">
       <div class="titleBox">
-        <label><%= data.user_id ? (User.find(data.user_id).name ? User.find(data.user_id).name : User.find(data.user_id).email) : "" %> Review</label>
+        <label><%= link_to User.find(data.user_id).name ? User.find(data.user_id).name : User.find(data.user_id).email, users_show_path(:id => data.user_id) %> Review</label>
+        </br>
+
+        <%= link_to like_listing_review_path(data), method: :put do %>
+             <button type="button" class="btn btn-link"> Upvote <%= data.get_upvotes.size %>
+             </button>
+        <% end %>
+
+        <%= link_to dislike_listing_review_path(data), method: :put do %>
+            <button type="button" class="btn btn-link"> Downvote <%= data.get_downvotes.size %>
+             </button>
+        <% end %>
+
       </div>
       <div class="commentBox">
           <h5 class="rating">Rating: <%= data.rating %></h5>

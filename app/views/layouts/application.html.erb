@@ -6,10 +6,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet" />
+
   </head>
 
   <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" role="navigation">
 
     <%= link_to_if(current_user.nil?, "WANDERLEASE",root_path, class: 'navbar-brand') do
       link_to("WANDERLEASE", listing_index_path, class: 'navbar-brand') end %>
@@ -31,6 +35,12 @@
           <li class="nav-item">
             <%= link_to 'My Listings', listing_show_mine_path, class: 'nav-link'%>
           </li>
+          <li class="nav-item">
+            <%= link_to 'Sublease Requests', listing_request_show_requests_to_me_path, class: 'nav-link'%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'My Contracts', listing_contract_show_path, class: 'nav-link'%>
+          </li>
         <% end %>
       </ul>
     </div>
@@ -38,7 +48,7 @@
     <div style='float: right;'>
       <% if current_user %>
         <%= link_to "My Account", users_show_path(:id => current_user.id), class: 'btn btn-link' %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-danger'%> 
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-danger'%>
       <% end %>
     </div>
   </nav>
