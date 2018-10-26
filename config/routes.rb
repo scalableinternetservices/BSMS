@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get '/users/show' => 'users#show'
   get '/users/edit_profile' => 'users#edit_profile'
   patch '/users/edit_profile' => 'users#update'
+
   # Listing Review Routes
   get 'listing/review/new' => 'listing_review#new'
   post 'listing/review/new' => 'listing_review#create'
@@ -35,6 +36,19 @@ Rails.application.routes.draw do
       put "dislike", to:"listing_review#downvote"
     end
   end
+
+  # Listing Request Routes
+  get 'listing/request/new' => 'listing_request#new'
+  post 'listing/request/new' => 'listing_request#create'
+  get 'listing/request/show_for_listing' => 'listing_request#show_for_listing'
+  get 'listing/request/show_requests_to_me' => 'listing_request#show_requests_to_me'
+  get 'listing/request/show_my_requests' => 'listing_request#show_my_requests'
+  delete 'listing/request/destroy' => 'listing_request#destroy'
+
+  # Listing Contract Routes
+  get 'listing/contract/new' => 'listing_contract#new'
+  post 'listing/contract/new' => 'listing_contract#create'
+  get 'listing/contract/show' => 'listing_contract#show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

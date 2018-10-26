@@ -1,0 +1,22 @@
+<div align='center'>
+  <h3>My Sublease Requests</h3>
+  <% if @listing_requests.count { |lr| lr.expired == false } > 0 %>
+    <% @listing_requests.each do |data| %>
+      <% if not data.expired %>
+        <div class="detailBox">
+          <div class="titleBox">
+            <label>
+              My Request For
+              <%= link_to Listing.find(data.listing_id).readable_title, listing_show_path(:listing_id => data.listing_id)%></label>
+            </br>
+          </div>
+          <div class="commentBox">
+            <p class="taskDescription"><%= data.request_message %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>No requests for any listings</p>
+  <% end %>
+</div>
