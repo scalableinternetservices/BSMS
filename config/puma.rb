@@ -47,5 +47,5 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 plugin :tmp_restart
 
 # Required for Elastic Beanstalk?
-bind "unix:///var/run/puma/my_app.sock"
-pidfile "/var/run/puma/my_app.sock"
+# bind "unix:///var/run/puma/my_app.sock"
+# pidfile "/var/run/puma/my_app.sock"
