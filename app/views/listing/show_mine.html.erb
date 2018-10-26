@@ -9,7 +9,7 @@
   <% end %>
   <% if @listing %>
     <% @listing.each_with_index do |data| %>
-      <h5 align="center"><%= data.title %></h5>
+      <h5 align="center"><%= link_to data.title, listing_show_path(:listing_id => data.id), class: 'btn btn-link', style: 'white-space: normal;'%></h5>
       <table align="center", class="table table-striped table-hover table-my-listings">
         <%= stylesheet_link_tag "listing" %>
         <tbody>
