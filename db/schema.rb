@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181025233552) do
+ActiveRecord::Schema.define(version: 20181026051331) do
+
+  create_table "listing_contracts", force: :cascade do |t|
+    t.string   "listing_id"
+    t.string   "subleaser_id"
+    t.string   "subletter_id"
+    t.datetime "expiration_date"
+    t.boolean  "expired",         default: false, null: false
+  end
+
+  create_table "listing_requests", force: :cascade do |t|
+    t.string  "listing_id"
+    t.string  "subleaser_id"
+    t.string  "request_message"
+    t.boolean "expired",         default: false, null: false
+  end
 
   create_table "listing_reviews", force: :cascade do |t|
     t.integer "rating"
@@ -41,6 +56,7 @@ ActiveRecord::Schema.define(version: 20181025233552) do
     t.string  "start_date"
     t.string  "end_date"
     t.string  "title"
+    t.boolean "available",             default: true, null: false
   end
 
   create_table "preferences", force: :cascade do |t|

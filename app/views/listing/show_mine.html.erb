@@ -9,7 +9,7 @@
   <% end %>
   <% if @listing %>
     <% @listing.each_with_index do |data| %>
-      <h5 align="center"><%= link_to data.title, listing_show_path(:listing_id => data.id), class: 'btn btn-link', style: 'white-space: normal;'%></h5>
+      <h5 align="center"><%= link_to data.readable_title, listing_show_path(:listing_id => data.id), class: 'btn btn-link', style: 'white-space: normal;'%></h5>
       <table align="center", class="table table-striped table-hover table-my-listings">
         <%= stylesheet_link_tag "listing" %>
         <tbody>
@@ -32,6 +32,10 @@
           <tr>
             <th scope="row">Description</th>
             <td><%= data.description %></td>
+          </tr>
+          <tr>
+            <th scope="row"><%= link_to 'Sublease Requests', listing_request_show_for_listing_path(:listing_id => data.id) %></th>
+            <td><%= data.listing_requests.size %></td>
           </tr>
           <tr>
             <th scope="row"><%= link_to 'Edit', listing_edit_path(:listing_id => data.id), class: 'btn btn-link', style: 'white-space: normal;'%></th>

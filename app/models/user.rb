@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_one :preferences, :dependent => :destroy
   has_many :listings
+  has_many :listing_contracts
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]

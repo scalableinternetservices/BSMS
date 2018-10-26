@@ -14,25 +14,29 @@
     </div>
     <div class='form-group'>
       <%= f.label :location, "Location" %>
-      <%= f.text_field :location %>
+      <%= f.text_field :location, :required => true %>
     </div>
     <div class='form-group'>
       <%= f.label :price, "Price $" %>
-      <%= f.text_field :price %>
+      <%= f.text_field :price, :required => true %>
     </div>
     <div class='form-group'>
       <%= f.label :start_date, "Start Date" %>
-      <%= f.text_field :start_date, :id => 'dateStart' %>
+      <%= f.text_field :start_date, :id => 'dateStart', :required => true %>
       <%= f.label :end_date, "End Date" %>
-      <%= f.text_field :end_date, :id => 'dateEnd' %>
+      <%= f.text_field :end_date, :id => 'dateEnd', :required => true %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :housing_type, "Type of Housing" %>
+      <%= f.select :housing_type, ['Condo', 'Apartment', 'Home'], :required => true %>
     </div>
     <div class='form-group'>
       <%= f.label :bedrooms, "Bedrooms" %>
-      <%= f.select :bedrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+      <%= f.select :bedrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :required => true %>
     </div>
     <div class='form-group'>
       <%= f.label :bathrooms, "Bathrooms" %>
-      <%= f.select :bathrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+      <%= f.select :bathrooms, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :required => true %>
     </div>
     <div class='form-group'>
       <%= f.label :gym, "Gym" %>
@@ -69,14 +73,6 @@
     <div class='form-group'>
       <%= f.label :parking, "Parking Spaces Available" %>
       <%= f.select :parking, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
-    </div>
-    <div class='form-group'>
-      <%= f.label :price, "Highest Price $" %>
-      <%= f.text_field :price %>
-    </div>
-    <div class='form-group'>
-      <%= f.label :housing_type, "Housing Type" %>
-      <%= f.text_field :housing_type %>
     </div>
     <div class='form-group'>
       <%= f.label :description, "Description" %>

@@ -3,7 +3,7 @@ class ListingController < ApplicationController
 
   def index
     @user = current_user
-    @listings = Listing.all
+    @listings = Listing.where(available: true)
   end
 
   def show
@@ -32,6 +32,7 @@ class ListingController < ApplicationController
       render :new
     end
   rescue => e
+    @listing = Listing.new
     flash.now[:notice] = e
     render :new
   end

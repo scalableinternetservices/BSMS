@@ -9,7 +9,6 @@
             <th> Location </th>
             <th> Price </th>
             <th> Duration </th>
-            <th> Amenities </th>
             <th> Housing type </th>
             <th> Average Rating </th>
             <th> Description </th>
@@ -18,11 +17,10 @@
 
       <% @listings.each do |data| %>
           <tr>
-                <td ><%= link_to data.title, listing_show_path(:listing_id => data.id), class: 'btn btn-link', style: 'white-space: normal;'%></td>
+                <td ><%= link_to data.readable_title, listing_show_path(:listing_id => data.id), class: 'btn btn-link', style: 'white-space: normal;'%></td>
                 <td ><%= data.location%></td>
                 <td><%= data.price %></td>
                 <td><%= data.start_date %> to <%= data.end_date %></td>
-                <td><%= data.amenities %></td>
                 <td><%= data.housing_type %></td>
                 <td><%= data.average_rating %></td>
                 <td><%= data.description %></td>

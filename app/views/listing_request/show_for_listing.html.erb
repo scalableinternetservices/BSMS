@@ -1,0 +1,22 @@
+<div align='center'>
+  <h3>Sublease Requests For <%= link_to Listing.find(@listing.id).readable_title, listing_show_path(:listing_id => @listing.id)%></h3>
+  <% if @listing_requests.size != 0 %>
+    <% @listing_requests.each do |data| %>
+      <% if not data.expired %>
+        <div class="detailBox">
+          <div class="titleBox">
+            <label>
+              Request From
+              <%= link_to User.find(data.subleaser_id).name ? User.find(data.subleaser_id).name : User.find(data.subleaser_id).email, users_show_path(:id => data.subleaser_id) %>
+            </br>
+          </div>
+          <div class="commentBox">
+            <p class="taskDescription"><%= data.request_message %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>No requests for this listing</p>
+  <% end %>
+</div>
