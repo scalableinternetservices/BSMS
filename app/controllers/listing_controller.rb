@@ -13,7 +13,7 @@ class ListingController < ApplicationController
 
   def show_mine
     @user = current_user
-    @listing = Listing.where(user_id: @user.id)
+    @listings = Listing.where(user_id: @user.id)
   end
 
   def new
@@ -39,14 +39,18 @@ class ListingController < ApplicationController
 
   def edit
     @listing = Listing.find(params[:listing_id])
-    if @listing.user_id != current_user.id
+    if not @listing.available
+      redirect_to listing_show_mine_path, :notice => "You cannot update a listing which is already subleased"
+    elsif @listing.user_id != current_user.id
       redirect_to listing_show_mine_path, :notice => "You cannot update a listing you do not own!"
     end
   end
 
   def update
     @listing = Listing.find(params[:listing_id])
-    if @listing.user_id != current_user.id
+    if not @listing.available
+      redirect_to listing_show_mine_path, :notice => "You cannot update a listing which is already subleased"
+    elsif @listing.user_id != current_user.id
       redirect_to listing_show_mine_path, :notice => "You cannot update a listing you do not own!"
     elsif @listing.valid?
       @listing.update(listing_params)

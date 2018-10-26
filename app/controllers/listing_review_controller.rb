@@ -4,6 +4,12 @@ class ListingReviewController < ApplicationController
   def new
     @listing = Listing.find(params[:listing_id])
     @listing_review = ListingReview.new
+    @listing_contract = ListingContract.where(listing_id: params[:listing_id])
+    if @listing_contract.size == 0
+      redirect_to listing_show_path(:listing_id => @listing.id), :notice => "You cannot review a listing you didn't sublease"
+    elsif @listing_contract.first.subleaser_id != current_user.id
+      redirect_to listing_show_path(:listing_id => @listing.id), :notice => "You cannot review a listing you didn't sublease"
+    end
   end
 
   def upvote
@@ -21,10 +27,17 @@ class ListingReviewController < ApplicationController
   def create
     @user = current_user
     @listing = Listing.find(listing_review_params[:listing_id])
-    @listing_review = ListingReview.new(listing_review_params)
-    @listing_review.save
-    @listing.listing_reviews << @listing_review
-    redirect_to listing_show_path(:listing_id => listing_review_params[:listing_id])
+    @listing_contract = ListingContract.where(listing_id: listing_review_params[:listing_id])
+    if @listing_contract.size == 0
+      redirect_to listing_show_path(:listing_id => @listing.id), :notice => "You cannot review a listing you didn't sublease"
+    elsif @listing_contract.first.subleaser_id != current_user.id
+      redirect_to listing_show_path(:listing_id => @listing.id), :notice => "You cannot review a listing you didn't sublease"
+    else
+      @listing_review = ListingReview.new(listing_review_params)
+      @listing_review.save
+      @listing.listing_reviews << @listing_review
+      redirect_to listing_show_path(:listing_id => listing_review_params[:listing_id]), :notice => "Successfully submitted review"
+    end
   end
 
   private

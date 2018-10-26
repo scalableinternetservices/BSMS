@@ -45,5 +45,10 @@ Rails.application.routes.draw do
   get 'listing/request/show_my_requests' => 'listing_request#show_my_requests'
   delete 'listing/request/destroy' => 'listing_request#destroy'
 
+  # Listing Contract Routes
+  get 'listing/contract/new' => 'listing_contract#new'
+  post 'listing/contract/new' => 'listing_contract#create'
+  get 'listing/contract/show' => 'listing_contract#show'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

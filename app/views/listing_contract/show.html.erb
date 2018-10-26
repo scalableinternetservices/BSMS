@@ -1,0 +1,45 @@
+<div align='center'>
+  <h3>Sublet Contracts</h3>
+  <% @sublet_contracts.each do |contract| %>
+    <% if not contract.expired %>
+      <div class="detailBox">
+        <div class="titleBox">
+          <label>
+            Sublet Contract For
+            <%= link_to Listing.find(contract.listing_id).readable_title, listing_show_path(:listing_id => contract.listing_id)%></label>
+          </br>
+        </div>
+        <div class="commentBox">
+          <p class="taskDescription">
+            <b>Subletter</b>: <%= link_to User.find(contract.subletter_id).name ? User.find(contract.subletter_id).name : User.find(contract.subletter_id).email, users_show_path(:id => contract.subletter_id) %></br>
+            <b>Subleaser</b>: <%= link_to User.find(contract.subleaser_id).name ? User.find(contract.subleaser_id).name : User.find(contract.subleaser_id).email, users_show_path(:id => contract.subleaser_id) %></br>
+            <b>Expiration</b>: <%= contract.expiration_date %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <h3>Sublease Contracts</h3>
+  <% @sublease_contracts.each do |contract| %>
+    <% if not contract.expired %>
+      <div class="detailBox">
+        <div class="titleBox">
+          <label>
+            Sublet Contract For
+            <%= link_to Listing.find(contract.listing_id).readable_title, listing_show_path(:listing_id => contract.listing_id)%></label>
+          </br>
+        </div>
+        <div class="commentBox">
+          <p class="taskDescription">
+            <b>Subletter</b>: <%= link_to User.find(contract.subletter_id).name ? User.find(contract.subletter_id).name : User.find(contract.subletter_id).email, users_show_path(:id => contract.subletter_id) %></br>
+            <b>Subleaser</b>: <%= link_to User.find(contract.subleaser_id).name ? User.find(contract.subleaser_id).name : User.find(contract.subleaser_id).email, users_show_path(:id => contract.subleaser_id) %></br>
+            <b>Expiration</b>: <%= contract.expiration_date %>
+          </p>
+          <div align='center'>
+            <%= link_to 'Submit Review', listing_review_new_path(:listing_id => contract.listing_id), class: 'btn btn-primary'%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

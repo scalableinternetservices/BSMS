@@ -3,7 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_one :preferences, :dependent => :destroy
   has_many :listings
-  has_many :listing_contracts
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]
@@ -22,6 +21,21 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name   # assuming the user model has a name
       user.image = auth.info.image # assuming the user model has an image
+    end
+  end
+
+  def average_rating
+    listings_with_reviews = self.listings.select { |listing| listing.listing_reviews.size > 0 }
+    average_ratings = listings_with_reviews.map { |listing| listing.avg_rating }
+    if not average_ratings.first.nil?
+      avg = average_ratings.reduce(:+) / listings_with_reviews.size.to_f
+      if avg == 0.0
+        'N/A'
+      else
+        avg
+      end
+    else
+      'N/A'
     end
   end
 end

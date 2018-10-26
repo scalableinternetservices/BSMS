@@ -1,6 +1,8 @@
 <div align='center'>
   <h3>Sublease Requests For <%= link_to Listing.find(@listing.id).readable_title, listing_show_path(:listing_id => @listing.id)%></h3>
-  <% if @listing_requests.size != 0 %>
+  <% if not @listing.available %>
+    <p>Listing no longer available</p>
+  <% elsif @listing_requests.size != 0 %>
     <% @listing_requests.each do |data| %>
       <% if not data.expired %>
         <div class="detailBox">

@@ -7,6 +7,7 @@
   <%= link_to 'Security', edit_user_registration_path, class: 'btn btn-link'%>
   <%= link_to 'My Requests To Sublease', listing_request_show_my_requests_path, class: 'btn btn-link'%>
   <% end %>
+  <h5>My Average Rating: <%= @user.average_rating %></h5>
   <h5>My Listing's Reviews</h5>
   <% if @listings %>
     <% @listings.each do |listing| %>

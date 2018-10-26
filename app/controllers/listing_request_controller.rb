@@ -5,6 +5,9 @@ class ListingRequestController < ApplicationController
     @user = current_user
     @listing = Listing.find(params[:listing_id])
     @listing_request = ListingRequest.new
+    if not @listing.available
+      redirect_to listing_show_path(:listing_id => @listing.id), :notice => "You can't request an unavailable listing!"
+    end
     if @user.id == @listing.user_id
       redirect_to listing_show_path(:listing_id => @listing.id), :notice => "You can't request your own listing!"
     end
@@ -13,6 +16,9 @@ class ListingRequestController < ApplicationController
   def create
     @user = current_user
     @listing = Listing.find(listing_request_params[:listing_id])
+    if not @listing.available
+      redirect_to listing_show_path(:listing_id => @listing.id), :notice => "You can't request an unavailable listing!"
+    end
     if @user.id == @listing.user_id
       redirect_to listing_show_path(:listing_id => @listing.id), :notice => "You can't request your own listing!"
     end

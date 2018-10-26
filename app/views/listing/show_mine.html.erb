@@ -7,8 +7,8 @@
       <li><%= notice %></li>
     </div>
   <% end %>
-  <% if @listing %>
-    <% @listing.each_with_index do |data| %>
+  <% if @listings %>
+    <% @listings.each_with_index do |data| %>
       <h5 align="center"><%= link_to data.readable_title, listing_show_path(:listing_id => data.id), class: 'btn btn-link', style: 'white-space: normal;'%></h5>
       <table align="center", class="table table-striped table-hover table-my-listings">
         <%= stylesheet_link_tag "listing" %>
@@ -34,8 +34,13 @@
             <td><%= data.description %></td>
           </tr>
           <tr>
-            <th scope="row"><%= link_to 'Sublease Requests', listing_request_show_for_listing_path(:listing_id => data.id) %></th>
-            <td><%= data.listing_requests.size %></td>
+            <% if data.available %>
+              <th scope="row"><%= link_to 'Sublease Requests', listing_request_show_for_listing_path(:listing_id => data.id) %></th>
+              <td><%= data.listing_requests.size %></td>
+            <% else %>
+              <th>Subleased To: <%= link_to User.find(ListingContract.where(listing_id: data.id).first.subleaser_id).name ? User.find(ListingContract.where(listing_id: data.id).first.subleaser_id).name : User.find(ListingContract.where(listing_id: data.id).first.subleaser_id).email , users_show_path(:id => ListingContract.where(listing_id: data.id).first.subleaser_id) %></th>
+              <th>Until: <%= ListingContract.where(listing_id: data.id).first.expiration_date %></th>
+            <% end %>
           </tr>
           <tr>
             <th scope="row"><%= link_to 'Edit', listing_edit_path(:listing_id => data.id), class: 'btn btn-link', style: 'white-space: normal;'%></th>

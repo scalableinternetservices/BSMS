@@ -1,6 +1,6 @@
 <div align='center'>
   <h3>My Sublease Requests</h3>
-  <% if @listing_requests.size != 0 %>
+  <% if @listing_requests.count { |lr| lr.expired == false } > 0 %>
     <% @listing_requests.each do |data| %>
       <% if not data.expired %>
         <div class="detailBox">

@@ -10,22 +10,24 @@
             <th> Price </th>
             <th> Duration </th>
             <th> Housing type </th>
-            <th> Average Rating </th>
             <th> Description </th>
-            <th> User </th>
+            <th> Landlord </th>
+            <th> Landlord Rating </th>
         </tr>
 
       <% @listings.each do |data| %>
+        <% if data.available %>
           <tr>
                 <td ><%= link_to data.readable_title, listing_show_path(:listing_id => data.id), class: 'btn btn-link', style: 'white-space: normal;'%></td>
                 <td ><%= data.location%></td>
                 <td><%= data.price %></td>
                 <td><%= data.start_date %> to <%= data.end_date %></td>
                 <td><%= data.housing_type %></td>
-                <td><%= data.average_rating %></td>
                 <td><%= data.description %></td>
                 <td><%= link_to User.find(data.user_id).name ? User.find(data.user_id).name : User.find(data.user_id).email, users_show_path(:id => data.user_id), class: 'btn btn-link', style: 'white-space: normal'; %></td>
+                <td><%= User.find(data.user_id).average_rating %></td>
           </tr>
+        <% end %>
       <% end %>
 
     </table>
