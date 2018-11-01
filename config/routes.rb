@@ -50,5 +50,8 @@ Rails.application.routes.draw do
   post 'listing/contract/new' => 'listing_contract#create'
   get 'listing/contract/show' => 'listing_contract#show'
 
+  # Matches Routes
+  get 'matches/index' => 'matches#index'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
