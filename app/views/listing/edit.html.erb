@@ -10,7 +10,7 @@
     <% end %>
     <div class='form-group'>
       <%= f.label :title, 'Title' %>
-      <%= f.text_field :title, :value => @listing.title %>
+      <%= f.text_field :title, :value => @listing.title, :required => true %>
     </div>
     <div class='form-group'>
       <%= f.label :location, 'Location' %>
