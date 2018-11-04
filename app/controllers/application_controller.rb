@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   			score += 1
   		end
   	end
-  	if preferences.price >= listing.price
+  	if preferences.price and preferences.price >= listing.price
   		score += 3
   	end
   	if preferences.bathrooms <= listing.bathrooms
@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   	if preferences.gym == listing.gym
   		score += 1
   	end
-  	if preferences.pet_friendly == listing.pet_friendly 
+  	if preferences.pet_friendly == listing.pet_friendly
   		score += 1
   		if preferences.pet_friendly == true
   			score += 2

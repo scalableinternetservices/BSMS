@@ -1,5 +1,5 @@
 <html>
-<div id = "listings">
+<div id = "listings" align='center'>
   <h3 align="center" >My Matchings </h3>
   <% if @sorted_listings %>
     <% @sorted_listings.each_with_index do |data, i| %>
@@ -38,6 +38,8 @@
         </tbody>
       </table>
     <% end %>
+  <% else %>
+    <h5>No matches found. Preferences not set.</h5>
   <% end %>
 </div>
 </html>
