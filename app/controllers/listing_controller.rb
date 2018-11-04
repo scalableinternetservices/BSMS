@@ -3,7 +3,7 @@ class ListingController < ApplicationController
 
   def index
     @user = current_user
-    @listings = Listing.where(available: true)
+    @listings = Listing.where(available: true).page params[:page]
   end
 
   def show

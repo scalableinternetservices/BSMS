@@ -15,6 +15,7 @@
             <th> Landlord Rating </th>
         </tr>
 
+      <%= paginate @listings %>
       <% @listings.each do |data| %>
         <% if data.available %>
           <tr>
