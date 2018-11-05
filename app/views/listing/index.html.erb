@@ -15,7 +15,6 @@
             <th> Landlord Rating </th>
         </tr>
 
-      <%= paginate @listings %>
       <% @listings.each do |data| %>
         <% if data.available %>
           <tr>
@@ -32,6 +31,13 @@
       <% end %>
 
     </table>
+    <div class="container pagination justify-content-center">
+      <%= paginate @listings, pagination_class: "pagination-sm"%>
+    </div>
+
+    <div class="container pagination justify-content-center bold-space">
+      <%= page_entries_info @listings %>
+    </div>
   </div>
 
   <% end %>
