@@ -8,7 +8,7 @@ class ListingController < ApplicationController
 
   def show
     @listing = Listing.find(params[:listing_id])
-    @listing_reviews = ListingReview.where(listing_id: params[:listing_id])
+    @listing_reviews = ListingReview.where(listing_id: params[:listing_id]).page params[:page]
   end
 
   def show_mine
