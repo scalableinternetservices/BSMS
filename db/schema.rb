@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181026081956) do
+ActiveRecord::Schema.define(version: 20181106012109) do
 
   create_table "listing_contracts", force: :cascade do |t|
+    t.datetime "expiration_date"
+    t.boolean  "expired",         default: false, null: false
     t.integer  "listing_id"
     t.integer  "subleaser_id"
     t.integer  "subletter_id"
-    t.datetime "expiration_date"
-    t.boolean  "expired",         default: false, null: false
   end
 
   create_table "listing_requests", force: :cascade do |t|
-    t.integer "listing_id"
-    t.integer "subleaser_id"
     t.string  "request_message"
     t.boolean "expired",         default: false, null: false
+    t.integer "listing_id"
+    t.integer "subleaser_id"
   end
 
   create_table "listing_reviews", force: :cascade do |t|
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20181026081956) do
   create_table "listings", force: :cascade do |t|
     t.string  "location"
     t.integer "price"
-    t.string  "amenities"
     t.string  "housing_type"
     t.string  "description"
     t.integer "user_id"
