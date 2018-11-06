@@ -31,6 +31,13 @@
       <% end %>
 
     </table>
+    <div class="container pagination justify-content-center">
+      <%= paginate @listings, pagination_class: "pagination-sm"%>
+    </div>
+
+    <div class="container pagination justify-content-center bold-space">
+      <%= page_entries_info @listings %>
+    </div>
   </div>
 
   <% end %>

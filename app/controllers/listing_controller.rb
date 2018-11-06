@@ -3,12 +3,12 @@ class ListingController < ApplicationController
 
   def index
     @user = current_user
-    @listings = Listing.where(available: true)
+    @listings = Listing.where(available: true).page params[:page]
   end
 
   def show
     @listing = Listing.find(params[:listing_id])
-    @listing_reviews = ListingReview.where(listing_id: params[:listing_id])
+    @listing_reviews = ListingReview.where(listing_id: params[:listing_id]).page params[:page]
   end
 
   def show_mine

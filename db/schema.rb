@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181030005659) do
+ActiveRecord::Schema.define(version: 20181106012109) do
 
   create_table "listing_contracts", force: :cascade do |t|
     t.datetime "expiration_date"
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20181030005659) do
   create_table "listings", force: :cascade do |t|
     t.string  "location"
     t.integer "price"
-    t.string  "amenities"
     t.string  "housing_type"
     t.string  "description"
     t.integer "user_id"

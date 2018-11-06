@@ -19,35 +19,35 @@
     </div>
    <div align="center", class='form-group form'>
       <%= f.label :gym, "Gym" %>
-      <%= f.select :gym, [true.humanize, false.humanize], :value => @preference.gym %>
+      <%= f.check_box :gym, :value => @preference.gym %>
     </div>
     <div align="center", class='form-group form'>
       <%= f.label :pet_friendly, "Pet Friendly" %>
-      <%= f.select :pet_friendly, [true.humanize, false.humanize], :value => @preference.pet_friendly %>
+      <%= f.check_box :pet_friendly, :value => @preference.pet_friendly %>
     </div>
     <div align="center", class='form-group form'>
       <%= f.label :ac, "Air Conditioning" %>
-      <%= f.select :ac, [true.humanize, false.humanize], :value => @preference.ac %>
+      <%= f.check_box :ac, :value => @preference.ac %>
     </div>
     <div align="center", class='form-group form'>
       <%= f.label :heater, "Heater" %>
-      <%= f.select :heater, [true.humanize, false.humanize, :value => @preference.heater] %>
+      <%= f.check_box :heater, :value => @preference.heater %>
     </div>
     <div align="center", class='form-group form'>
       <%= f.label :wifi, "Wi-Fi" %>
-      <%= f.select :wifi, [true.humanize, false.humanize], :value => @preference.wifi %>
+      <%= f.check_box :wifi, :value => @preference.wifi %>
     </div>
     <div align="center", class='form-group form'>
       <%= f.label :wash_and_dry, "Washer and Dryer" %>
-      <%= f.select :wash_and_dry, [true.humanize, false.humanize], :value => @preference.wash_and_dry %>
+      <%= f.check_box :wash_and_dry, :value => @preference.wash_and_dry %>
     </div>
     <div align="center", class='form-group form'>
       <%= f.label :yard, "Yard Space" %>
-      <%= f.select :yard, [true.humanize, false.humanize], :value => @preference.yard %>
+      <%= f.check_box :yard, :value => @preference.yard %>
     </div>
     <div align="center", class='form-group form'>
       <%= f.label :public_transportation, "Near Public Transportation" %>
-      <%= f.select :public_transportation, [true.humanize, false.humanize], :value => @preference.public_transportation %>
+      <%= f.check_box :public_transportation, :value => @preference.public_transportation %>
     </div>
     <div align="center", class='form-group form'>
       <%= f.label :parking, "Parking Spaces Available" %>

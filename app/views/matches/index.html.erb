@@ -1,0 +1,45 @@
+<html>
+<div id = "listings" align='center'>
+  <h3 align="center" >My Matchings </h3>
+  <% if @sorted_listings %>
+    <% @sorted_listings.each_with_index do |data, i| %>
+      <h5 align="center"> #<%= i + 1 %> <%= link_to data.readable_title, listing_show_path(:listing_id => data.id), class: 'btn btn-link', style: 'white-space: normal;'%></h5>
+      <table align="center", class="table table-striped table-hover table-my-listings">
+        <%= stylesheet_link_tag "listing" %>
+        <tbody>
+          <tr>
+            <th scope="row">Location</th>
+            <td><%= data.location %></td>
+          </tr>
+          <tr>
+            <th scope="row">Price</th>
+            <td><%= data.price %></td>
+          </tr>
+          <tr>
+            <th scope="row">Duration Available</th>
+            <td><%= data.start_date %> to <%= data.end_date %></td>
+          </tr>
+          <tr>
+            <th scope="row">Housing Type</th>
+            <td><%= data.housing_type %></td>
+          </tr>
+          <tr>
+            <th scope="row">Bedrooms</th>
+            <td><%= data.bedrooms %></td>
+          </tr>
+          <tr>
+            <th scope="row">Bathrooms</th>
+            <td><%= data.bathrooms %></td>
+          </tr>
+          <tr>
+            <th scope="row">Pet Friendly</th>
+            <td><%= data.pet_friendly.humanize %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  <% else %>
+    <h5>No matches found. Preferences not set.</h5>
+  <% end %>
+</div>
+</html>
