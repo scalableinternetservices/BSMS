@@ -118,4 +118,11 @@
     <% end %>
   <% end %>
   </div>
+  <div class="container pagination justify-content-center">
+    <%= paginate @listing_reviews, pagination_class: "pagination-sm"%>
+  </div>
+
+  <div class="container pagination justify-content-center bold-space">
+    <%= page_entries_info @listing_reviews %>
+  </div>
 </div>
