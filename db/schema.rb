@@ -13,18 +13,18 @@
 ActiveRecord::Schema.define(version: 20181106012109) do
 
   create_table "listing_contracts", force: :cascade do |t|
+    t.datetime "expiration_date"
+    t.boolean  "expired",         default: false, null: false
     t.integer  "listing_id"
     t.integer  "subleaser_id"
     t.integer  "subletter_id"
-    t.datetime "expiration_date"
-    t.boolean  "expired",         default: false, null: false
   end
 
   create_table "listing_requests", force: :cascade do |t|
-    t.integer "listing_id"
-    t.integer "subleaser_id"
     t.string  "request_message"
     t.boolean "expired",         default: false, null: false
+    t.integer "listing_id"
+    t.integer "subleaser_id"
   end
 
   create_table "listing_reviews", force: :cascade do |t|
