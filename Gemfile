@@ -44,6 +44,7 @@ gem 'acts_as_votable', '~> 0.11.1'
 # For pagination
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
+gem 'mini_racer', platforms: :ruby
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
