@@ -3,7 +3,7 @@ class MatchesController < ApplicationController
 
   def index
   	@user = current_user
-    @listings = Listing.where.not(user_id: @user.id).last(10)
+    @listings = Listing.where.not(user_id: @user.id)#.last(10)
     @preferences = Preferences.where(user_id: @user.id).first
 		@sorted_listings = nil
 		if @preferences
