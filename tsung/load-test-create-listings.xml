@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/usr/local/share/tsung/tsung-1.0.dtd" [] >
+<tsung loglevel="notice">
+
+  <!-- Client side setup -->
+  <clients>
+    <client host="localhost" use_controller_vm="true" maxusers='15000'/>
+  </clients>
+
+  <!-- Server side setup -->
+  <servers>
+    <server host="localhost" port="3000" type="tcp"></server>
+  </servers>
+
+  <load>
+    <arrivalphase phase="1" duration="20" unit="second">
+      <users arrivalrate="2" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="2" duration="20" unit="second">
+      <users arrivalrate="4" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="3" duration="20" unit="second">
+      <users arrivalrate="6" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="4" duration="20" unit="second">
+      <users arrivalrate="8" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="5" duration="20" unit="second">
+      <users arrivalrate="10" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="6" duration="25" unit="second">
+      <users arrivalrate="12" unit="second"></users>
+    </arrivalphase>
+  </load>
+
+  <options>
+    <!-- Set connection timeout to 2 seconds -->
+    <option name="global_ack_timeout" value="2000"></option>
+
+    <option type="ts_http" name="user_agent">
+      <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
+    </option>
+  </options>
+
+  <sessions>
+    <session name="create-listings" probability="100" type="ts_http">
+      <setdynvars sourcetype="random_number" start="1" end="1000">
+        <var name="id" />
+      </setdynvars>
+
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+
+      <request>
+        <http url='/users/sign_in' version='1.1' method='GET'></http>
+      </request>
+
+      <thinktime value="2" random="true"/>
+
+      <request subst="true">
+        <http url='/users/sign_in' version='1.1' method='POST'
+          content_type='application/x-www-form-urlencoded'
+          contents='user%5Bemail%5D=email%%_id%%@bsms.com&amp;user%5Bpassword%5D=seedaccount'
+          ></http>
+      </request>
+
+      <thinktime value="2" random="true"/>
+
+      <request>
+        <http url='/listing/show_mine' version='1.1' method='GET'></http>
+      </request>
+
+      <thinktime value="2" random="true"/>
+
+      <request>
+        <http url='/listing/new' version='1.1' method='GET'></http>
+      </request>
+
+      <thinktime value="2" random="true"/>
+
+      <setdynvars sourcetype="random_number" start="1" end="10">
+        <var name="bedrooms" />
+        <var name="bathrooms" />
+        <var name="parking" />
+      </setdynvars>
+
+      <setdynvars sourcetype="random_number" start="0" end="1">
+        <var name="gym" />
+        <var name="pet_friendly" />
+        <var name="ac" />
+        <var name="heater" />
+        <var name="wifi" />
+        <var name="wash_and_dry" />
+        <var name="yard" />
+        <var name="public_transportation" />
+      </setdynvars>
+
+      <request subst="true">
+        <http url='/listing/new'
+          version='1.1'
+          method='POST'
+          content_type='application/x-www-form-urlencoded'
+          contents='listing%5Btitle%5D=Tsung&amp;listing%5Blocation%5D=Tsungland&amp;listing%5Bprice%5D=1500&amp;listing%5Bstart_date%5D=2019-11-25&amp;listing%5Bend_date%5D=2019-12-23&amp;listing%5Bhousing_type%5D=Condo&amp;listing%5Bbedrooms%5D=%%_bedrooms%%&amp;listing%5Bbathrooms%5D=%%_bathrooms%%&amp;listing%5Bgym%5D=%%_gym%%&amp;listing%5Bpet_friendly%5D=%%_pet_friendly%%&amp;listing%5Bac%5D=%%_ac%%&amp;listing%5Bheater%5D=%%_heater%%&amp;listing%5Bwifi%5D=%%_wifi%%&amp;listing%5Bwash_and_dry%5D=%%_wash_and_dry%%&amp;listing%5Byard%5D=%%_yard%%&amp;listing%5Bpublic_transportation%5D=%%_public_transportation%%&amp;listing%5Bparking%5D=%%_parking%%&amp;listing%5Bdescription%5D=tsung_test&amp;commit=Submit'
+          ></http>
+      </request>
+
+      <thinktime value="2" random="true"/>
+
+      <request>
+        <http url='/users/sign_out' version='1.1' method='DELETE'></http>
+      </request>
+
+    </session>
+  </sessions>
+</tsung>
