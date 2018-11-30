@@ -43,7 +43,7 @@
   </options>
 
   <sessions>
-    <session name="contracts" probability="100" type="ts_http">
+    <session name="preferences" probability="100" type="ts_http">
       <setdynvars sourcetype="random_number" start="1" end="1000">
         <var name="id" />
       </setdynvars>
@@ -56,7 +56,7 @@
         <http url='/users/sign_in' version='1.1' method='GET'></http>
       </request>
 
-      <thinktime value="2" random="true"/>
+      <thinktime value="3" random="true"/>
 
       <request subst="true">
         <http url='/users/sign_in' version='1.1' method='POST'
@@ -65,31 +65,36 @@
           ></http>
       </request>
 
-      <for from="1" to="5" incr="1" var="counter">
-        <thinktime value="1" random="true"/>
-        <setdynvars sourcetype="random_number" start="1" end="5000">
-          <var name="listing_id" />
-        </setdynvars>
-        <request subst="true">
-          <http url='/listing/request/new?listing_id=%%_listing_id%%'
-            version='1.1'
-            method='GET'
-            ></http>
-        </request>
-        <request subst="true">
-          <http url='/listing/request/new'
-            version='1.1'
-            method='POST'
-            content_type='application/x-www-form-urlencoded'
-            contents='listing_request%5Brequest_message%5D=message&amp;listing_request%5Blisting_id%5D=%%_listing_id%%&amp;listing_request%5Bsubleaser_id%5D=%%_id%%&amp;commit=Submit'
-            ></http>
-        </request>
-      </for>
-
-      <thinktime value="2" random="true"/>
-
       <request>
-        <http url='/listing/request/show_requests_to_me' version='1.1' method='GET'></http>
+        <http url='/preferences/edit' version='1.1' method='GET'></http>
+      </request>
+
+      <thinktime value="3" random="true"/>
+
+      <setdynvars sourcetype="random_number" start="1" end="10">
+        <var name="bedrooms" />
+        <var name="bathrooms" />
+        <var name="parking" />
+      </setdynvars>
+
+      <setdynvars sourcetype="random_number" start="0" end="1">
+        <var name="gym" />
+        <var name="pet_friendly" />
+        <var name="ac" />
+        <var name="heater" />
+        <var name="wifi" />
+        <var name="wash_and_dry" />
+        <var name="yard" />
+        <var name="public_transportation" />
+      </setdynvars>
+
+      <request subst="true">
+        <http url='/preferences/edit'
+          version='1.1'
+          method='POST'
+          content_type='application/x-www-form-urlencoded'
+          contents='preferences%5Btitle%5D=Tsung&amp;preferences%5Blocation%5D=Tsungland&amp;preferences%5Bprice%5D=1500&amp;preferences%5Bstart_date%5D=2019-11-25&amp;preferences%5Bend_date%5D=2019-12-23&amp;preferences%5Bhousing_type%5D=Condo&amp;preferences%5Bbedrooms%5D=%%_bedrooms%%&amp;preferences%5Bbathrooms%5D=%%_bathrooms%%&amp;preferences%5Bgym%5D=%%_gym%%&amp;preferences%5Bpet_friendly%5D=%%_pet_friendly%%&amp;preferences%5Bac%5D=%%_ac%%&amp;preferences%5Bheater%5D=%%_heater%%&amp;preferences%5Bwifi%5D=%%_wifi%%&amp;preferences%5Bwash_and_dry%5D=%%_wash_and_dry%%&amp;preferences%5Byard%5D=%%_yard%%&amp;preferences%5Bpublic_transportation%5D=%%_public_transportation%%&amp;preferences%5Bparking%5D=%%_parking%%&amp;preferences%5Bdescription%5D=tsung_test&amp;commit=Submit'
+          ></http>
       </request>
 
       <thinktime value="2" random="true"/>
