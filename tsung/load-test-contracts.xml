@@ -43,7 +43,7 @@
   </options>
 
   <sessions>
-    <session name="contracts" probability="100" type="ts_http">
+    <session name="request-contracts" probability="100" type="ts_http">
       <setdynvars sourcetype="random_number" start="1" end="1000">
         <var name="id" />
       </setdynvars>

@@ -4,7 +4,7 @@ class Listing < ActiveRecord::Base
 	has_many :listing_requests, dependent: :destroy
 	has_one :listing_contract, dependent: :destroy
 	validates :user_id, presence: true
-	paginates_per 100000
+	paginates_per 10000
 
 	def average_rating
 		if self.listing_reviews.size > 0
