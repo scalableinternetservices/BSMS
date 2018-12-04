@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181106012109) do
+ActiveRecord::Schema.define(version: 20181204001341) do
 
   create_table "listing_contracts", force: :cascade do |t|
     t.datetime "expiration_date"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 20181106012109) do
     t.integer  "listing_id"
     t.integer  "subleaser_id"
     t.integer  "subletter_id"
+    t.index ["listing_id"], name: "index_listing_contracts_on_listing_id"
+    t.index ["subleaser_id"], name: "index_listing_contracts_on_subleaser_id"
   end
 
   create_table "listing_requests", force: :cascade do |t|
@@ -25,6 +27,7 @@ ActiveRecord::Schema.define(version: 20181106012109) do
     t.boolean "expired",         default: false, null: false
     t.integer "listing_id"
     t.integer "subleaser_id"
+    t.index ["subleaser_id"], name: "index_listing_requests_on_subleaser_id"
   end
 
   create_table "listing_reviews", force: :cascade do |t|
@@ -32,6 +35,7 @@ ActiveRecord::Schema.define(version: 20181106012109) do
     t.string  "review"
     t.integer "listing_id"
     t.integer "user_id"
+    t.index ["listing_id"], name: "index_listing_reviews_on_listing_id"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -56,6 +60,8 @@ ActiveRecord::Schema.define(version: 20181106012109) do
     t.string  "end_date"
     t.string  "title"
     t.boolean "available",             default: true, null: false
+    t.index ["available"], name: "index_listings_on_available"
+    t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
   create_table "preferences", force: :cascade do |t|
@@ -73,6 +79,7 @@ ActiveRecord::Schema.define(version: 20181106012109) do
     t.boolean "wash_and_dry"
     t.boolean "yard"
     t.boolean "public_transportation"
+    t.index ["user_id"], name: "index_preferences_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
