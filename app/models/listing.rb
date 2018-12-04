@@ -7,26 +7,32 @@ class Listing < ActiveRecord::Base
 	paginates_per 10
 
 	def average_rating
-		if self.listing_reviews.size > 0
-			self.listing_reviews.average(:rating)
-		else
-			''
+		Rails.cache.fetch("#{cache_key}/average_rating", expires_in: 12.hours) do
+			if self.listing_reviews.size > 0
+				self.listing_reviews.average(:rating)
+			else
+				''
+			end
 		end
 	end
 
 	def avg_rating
-		if self.listing_reviews.size > 0
-			self.listing_reviews.average(:rating)
-		else
-			0
+		Rails.cache.fetch("#{cache_key}/avg_rating", expires_in: 12.hours) do
+			if self.listing_reviews.size > 0
+				self.listing_reviews.average(:rating)
+			else
+				0
+			end
 		end
 	end
 
 	def readable_title
-		if self.title
-			self.title
-		else
-			'Home in ' + self.location
+		Rails.cache.fetch("#{cache_key}/readable_title", expires_in: 12.hours) do
+			if self.title
+				self.title
+			else
+				'Home in ' + self.location
+			end
 		end
 	end
 end

@@ -9,7 +9,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="BSMS-12.jsxay2uphm.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
+    <server host="BSMS-indexed.jsxay2uphm.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
   </servers>
 
   <load>

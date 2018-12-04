@@ -1,6 +1,8 @@
 class ListingController < ApplicationController
   before_action :authenticate_user!
 
+  caches_action :index, :show, :show_mine
+
   def index
     @user = current_user
     @listings = Listing.where(available: true).page params[:page]

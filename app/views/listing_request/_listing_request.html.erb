@@ -1,0 +1,15 @@
+<div class="detailBox">
+  <div class="titleBox">
+    <label>
+      <%= link_to User.find(listing_request.subleaser_id).name ? User.find(listing_request.subleaser_id).name : User.find(listing_request.subleaser_id).email, users_show_path(:id => listing_request.subleaser_id) %>
+      Request For
+      <%= link_to Listing.find(listing_request.listing_id).readable_title, listing_show_path(:listing_id => listing_request.listing_id)%></label>
+    </br>
+  </div>
+  <div class="commentBox">
+    <p class="taskDescription"><%= listing_request.request_message %></p>
+    <div align='center'>
+      <%= link_to "Accept Request", listing_contract_new_path(:listing_request_id => listing_request.id), :class => "btn btn-primary" %>
+    </div>
+  </div>
+</div>

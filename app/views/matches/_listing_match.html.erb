@@ -1,0 +1,34 @@
+<h5 align="center"> #<%= i + 1 %> <%= link_to listing_match.readable_title, listing_show_path(:listing_id => listing_match.id), class: 'btn btn-link', style: 'white-space: normal;'%></h5>
+<table align="center", class="table table-striped table-hover table-my-listings">
+  <%= stylesheet_link_tag "listing" %>
+  <tbody>
+    <tr>
+      <th scope="row">Location</th>
+      <td><%= listing_match.location %></td>
+    </tr>
+    <tr>
+      <th scope="row">Price</th>
+      <td><%= listing_match.price %></td>
+    </tr>
+    <tr>
+      <th scope="row">Duration Available</th>
+      <td><%= listing_match.start_date %> to <%= listing_match.end_date %></td>
+    </tr>
+    <tr>
+      <th scope="row">Housing Type</th>
+      <td><%= listing_match.housing_type %></td>
+    </tr>
+    <tr>
+      <th scope="row">Bedrooms</th>
+      <td><%= listing_match.bedrooms %></td>
+    </tr>
+    <tr>
+      <th scope="row">Bathrooms</th>
+      <td><%= listing_match.bathrooms %></td>
+    </tr>
+    <tr>
+      <th scope="row">Pet Friendly</th>
+      <td><%= listing_match.pet_friendly.humanize %></td>
+    </tr>
+  </tbody>
+</table>

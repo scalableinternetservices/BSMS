@@ -25,17 +25,19 @@ class User < ApplicationRecord
   end
 
   def average_rating
-    listings_with_reviews = self.listings.select { |listing| listing.listing_reviews.size > 0 }
-    average_ratings = listings_with_reviews.map { |listing| listing.avg_rating }
-    if not average_ratings.first.nil?
-      avg = average_ratings.reduce(:+) / listings_with_reviews.size.to_f
-      if avg == 0.0
-        'N/A'
+		Rails.cache.fetch("#{cache_key}/average_rating", expires_in: 12.hours) do
+      listings_with_reviews = self.listings.select { |listing| listing.listing_reviews.size > 0 }
+      average_ratings = listings_with_reviews.map { |listing| listing.avg_rating }
+      if not average_ratings.first.nil?
+        avg = average_ratings.reduce(:+) / listings_with_reviews.size.to_f
+        if avg == 0.0
+          'N/A'
+        else
+          avg
+        end
       else
-        avg
+        'N/A'
       end
-    else
-      'N/A'
     end
   end
 end

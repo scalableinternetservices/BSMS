@@ -1,0 +1,10 @@
+<tr>
+      <td ><%= link_to listing.readable_title, listing_show_path(:listing_id => listing.id), class: 'btn btn-link', style: 'white-space: normal;'%></td>
+      <td ><%= listing.location%></td>
+      <td><%= listing.price %></td>
+      <td><%= listing.start_date %> to <%= listing.end_date %></td>
+      <td><%= listing.housing_type %></td>
+      <td><%= listing.description %></td>
+      <td><%= link_to User.find(listing.user_id).name ? User.find(listing.user_id).name : User.find(listing.user_id).email, users_show_path(:id => listing.user_id), class: 'btn btn-link', style: 'white-space: normal'; %></td>
+      <td><%= User.find(listing.user_id).average_rating %></td>
+</tr>

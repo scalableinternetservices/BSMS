@@ -1,6 +1,8 @@
 class PreferencesController < ApplicationController
 	before_action :authenticate_user!
 
+	caches_action :show
+
 	def show
 		@user = current_user
 		@preference = Preferences.where(user_id: @user.id).first

@@ -1,6 +1,8 @@
 class ListingRequestController < ApplicationController
   before_action :authenticate_user!
 
+  caches_action :show_for_listing, :show_requests_to_me, :show_my_requests
+
   def new
     @user = current_user
     @listing = Listing.find(params[:listing_id])

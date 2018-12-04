@@ -1,6 +1,8 @@
 class MatchesController < ApplicationController
 	before_action :authenticate_user!
 
+	caches_action :index
+
   def index
   	@user = current_user
     @listings = Listing.where.not(user_id: @user.id).last(10)

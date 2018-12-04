@@ -1,23 +1,11 @@
 <div align='center'>
   <h3>Sublease Requests For My Listings</h3>
   <% @my_listings.each do |listing| %>
-    <% listing.listing_requests.each do |data| %>
-      <% if not data.expired %>
-        <div class="detailBox">
-          <div class="titleBox">
-            <label>
-              <%= link_to User.find(data.subleaser_id).name ? User.find(data.subleaser_id).name : User.find(data.subleaser_id).email, users_show_path(:id => data.subleaser_id) %>
-              Request For
-              <%= link_to Listing.find(data.listing_id).readable_title, listing_show_path(:listing_id => data.listing_id)%></label>
-            </br>
-          </div>
-          <div class="commentBox">
-            <p class="taskDescription"><%= data.request_message %></p>
-            <div align='center'>
-              <%= link_to "Accept Request", listing_contract_new_path(:listing_request_id => data.id), :class => "btn btn-primary" %>
-            </div>
-          </div>
-        </div>
+    <% listing.listing_requests.each do |listing_request| %>
+      <% if not listing_request.expired %>
+        <% cache listing_request do %>
+          <%= render :partial => 'listing_request/listing_request', :locals => {:listing_request => listing_request} %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

@@ -1,6 +1,8 @@
 class ListingContractController < ApplicationController
   before_action :authenticate_user!
 
+  caches_action :show
+
   def new
     @subletter_user = current_user
     @listing_request = ListingRequest.find(params[:listing_request_id])
